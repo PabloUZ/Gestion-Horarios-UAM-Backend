@@ -28,5 +28,5 @@ def update_user_password(cc = Path(), payload: ChangePassword = Body()):
     return change_password(cc, payload.password)
 
 @router.delete('/{cc}')
-def user_detail(cc = Path()):
+def delete(cc = Path()):
     return delete_user(cc)
