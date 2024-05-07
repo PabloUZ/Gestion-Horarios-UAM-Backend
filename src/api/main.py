@@ -5,9 +5,11 @@ from .config.database import Base, engine
 
 from .users.routers.users import router as user_router
 from .users.routers.roles import router as role_router
+from .users.routers.permissions import router as perm_router
 
 from .users.models.users import User
 from .users.models.roles import Role
+from .users.models.permissions import Permission
 
 api_version = getenv("API_VERSION")
 
@@ -25,3 +27,4 @@ def root():
 
 app.include_router(user_router)
 app.include_router(role_router)
+app.include_router(perm_router)
