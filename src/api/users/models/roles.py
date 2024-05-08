@@ -11,3 +11,4 @@ class Role(Base):
     active = Column(Boolean, default=False)
 
     permissions = relationship("Permission", secondary=role_permissions, back_populates="roles", passive_deletes=True)
+    users = relationship("User", back_populates="role", passive_deletes=True)

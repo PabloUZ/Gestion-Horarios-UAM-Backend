@@ -1,6 +1,7 @@
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from sqlalchemy import func
+from src.api.users.models.roles import Role
 from src.api.config.database import SessionLocal
 from src.api.users.models.users import User
 from src.api.utils.password import Password
@@ -85,7 +86,10 @@ def get_single(cc):
             "status": 404,
             "message": "User not found"
         }, 404)
-    return JSONResponse(jsonable_encoder(user))
+    user_dict = jsonable_encoder(user)
+    user_dict["role"] = jsonable_encoder(user.role)
+    del user_dict["role_name"]
+    return JSONResponse(user_dict)
 
 def update_user(cc, payload):
     db = SessionLocal()
@@ -150,4 +154,55 @@ def change_password(cc, pwd):
         "status": 200,
         "message": "User password updated successfully",
         "user": jsonable_encoder(user)
+    }, 200)
+
+def add_roles(cc, role_name):
+    db = SessionLocal()
+    user = db.query(User).filter(User.cc == cc).first()
+    if not user:
+        return JSONResponse({
+            "status": 404,
+            "message": "User not found"
+        }, 404)
+    role = db.query(Role).filter(Role.name == role_name).first()
+    if not role:
+        return JSONResponse({
+            "status": 404,
+            "message": "Role not found"
+        }, 404)
+    if user.role is not None and user.role.name == role.name:
+        return JSONResponse({
+            "status": 400,
+            "message": "This user already has the role"
+        })
+    role.users.append(user)
+    db.commit()
+    db.refresh(user)
+    user_dict = jsonable_encoder(user)
+    user_dict["role"] = jsonable_encoder(user.role)
+    del user_dict["role_name"]
+    return JSONResponse({
+        "status": 200,
+        "message": "Role added successfully to the user",
+        "user": user_dict
+    }, 200)
+
+def remove_roles(cc):
+    db = SessionLocal()
+    user = db.query(User).filter(User.cc == cc).first()
+    if not user:
+        return JSONResponse({
+            "status": 404,
+            "message": "User not found"
+        }, 404)
+    user.role = None
+    db.commit()
+    db.refresh(user)
+    user_dict = jsonable_encoder(user)
+    user_dict["role"] = jsonable_encoder(user.role)
+    del user_dict["role_name"]
+    return JSONResponse({
+        "status": 200,
+        "message": "Role removed successfully from the user",
+        "user": user_dict
     }, 200)

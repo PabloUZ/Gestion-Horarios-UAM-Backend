@@ -2,7 +2,7 @@ from fastapi import APIRouter, Body, Depends, Path, Query
 from typing import Optional
 
 from src.api.users.schemas.users import ChangePassword, CreateUser, UpdateUser
-from src.api.users.repositories.users import change_password, delete_user, get_single, post_user, get_all_users, update_user
+from src.api.users.repositories.users import add_roles, change_password, delete_user, get_single, post_user, get_all_users, remove_roles, update_user
 
 router = APIRouter(prefix="/users")
 
@@ -30,3 +30,11 @@ def update_user_password(cc = Path(), payload: ChangePassword = Body()):
 @router.delete('/{cc}')
 def delete(cc = Path()):
     return delete_user(cc)
+
+@router.put('/{cc}/role')
+def change_role(cc = Path(), payload = Body()):
+    return add_roles(cc, payload["role"])
+
+@router.delete('/{cc}/role')
+def delete_role(cc = Path()):
+    return remove_roles(cc)
