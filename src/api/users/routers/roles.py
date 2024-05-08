@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Body, Depends, Path, Query
 from typing import Optional
 
-from src.api.users.repositories.roles import delete_role, get_all_roles, get_single, post_role, update_role
+from src.api.users.repositories.roles import add_perms, delete_perm, delete_role, get_all_roles, get_single, list_perms, post_role, update_role
 from src.api.users.schemas.roles import CreateRole, UpdateRole
 
 router = APIRouter(prefix="/roles")
@@ -26,3 +26,15 @@ def update(name = Path(), role: UpdateRole = Body()):
 @router.delete('/{name}')
 def delete(name = Path()):
     return delete_role(name)
+
+@router.get('/{name}/permissions')
+def list_permissions(name = Path()):
+    return list_perms(name)
+
+@router.post('/{name}/permissions')
+def add_permissions(name = Path(), perms = Body()):
+    return add_perms(name, perms)
+
+@router.delete('/{name}/permissions/{perm_name}')
+def remove_permission(name = Path(), perm_name = Path()):
+    return delete_perm(name, perm_name)

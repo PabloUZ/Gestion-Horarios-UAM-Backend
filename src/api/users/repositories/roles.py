@@ -1,6 +1,7 @@
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from sqlalchemy import func
+from src.api.users.models.permissions import Permission
 from src.api.config.database import SessionLocal
 from src.api.users.models.roles import Role
 
@@ -58,7 +59,9 @@ def get_single(name):
             "status": 404,
             "message": "Role not found"
         }, 404)
-    return JSONResponse(jsonable_encoder(role))
+    role_dict = jsonable_encoder(role)
+    role_dict["permissions"] = jsonable_encoder(role.permissions)
+    return JSONResponse(role_dict)
 
 def update_role(name, payload):
     db = SessionLocal()
@@ -103,3 +106,84 @@ def delete_role(name):
         "message": "Role deleted successfully",
         "role": jsonable_encoder(role)
     }, 200)
+
+def add_perms(role_name, permissions):
+    db = SessionLocal()
+    role = db.query(Role).filter(Role.name == role_name).first()
+    if not role:
+        return JSONResponse({
+            "status": 404,
+            "message": "Role not found"
+        }, 404)
+    perms = []
+    error = None
+    for perm_name in permissions:
+        perm = db.query(Permission).filter(Permission.name == perm_name).first()
+        if not perm:
+            return JSONResponse({
+                "status": 404,
+                "message": "Permission not found"
+            }, 404)
+        for p in role.permissions:
+            if p.name == perm.name:
+                if error is None:
+                    error = {
+                        "status": 400,
+                        "message": "This role already contains the permissions",
+                        "permissions": []
+                    }
+                error["permissions"].append(p.name)
+        perms.append(perm)
+    if error is not None:
+        return JSONResponse(error, 400)
+    role.permissions.extend(perms)
+    db.commit()
+    db.refresh(role)
+    role_dict = jsonable_encoder(role)
+    role_dict["permissions"] = jsonable_encoder(role.permissions)
+
+    return JSONResponse({
+        "status": 200,
+        "message": "Permissions added successfully",
+        "role": role_dict
+    }, 200)
+
+def delete_perm(role_name, perm):
+    db = SessionLocal()
+    role = db.query(Role).filter(Role.name == role_name).first()
+    if not role:
+        return JSONResponse({
+            "status": 404,
+            "message": "Role not found"
+        }, 404)
+    permission = db.query(Permission).filter(Permission.name == perm).first()
+    if not permission:
+        return JSONResponse({
+            "status": 404,
+            "message": "Permission not found"
+        }, 404)
+    if not permission in role.permissions:
+        return JSONResponse({
+            "status": 404,
+            "message": "Permission not found in role"
+        }, 404)
+    role.permissions.remove(permission)
+    db.commit()
+    db.refresh(role)
+    role_dict = jsonable_encoder(role)
+    role_dict["permissions"] = jsonable_encoder(role.permissions)
+    return JSONResponse({
+        "status": 200,
+        "message": "Permission removed successfully",
+        "role": role_dict
+    })
+
+def list_perms(role_name):
+    db = SessionLocal()
+    role = db.query(Role).filter(Role.name == role_name).first()
+    if not role:
+        return JSONResponse({
+            "status": 404,
+            "message": "Role not found"
+        }, 404)
+    return JSONResponse(jsonable_encoder(role.permissions))
