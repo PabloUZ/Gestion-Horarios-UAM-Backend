@@ -16,3 +16,7 @@ class UpdateUser(BaseModel):
 
 class ChangePassword(BaseModel):
     password: str = Field(min_length=8, max_length=30)
+
+class Login(BaseModel):
+    email: str = Field(min_length=6, max_length=80, pattern=r'^[a-z0-9!&\-#.~]+@[a-z0-9]+\.(([a-z0-9]+\.)+)?[a-z0-9]+$')
+    password: str = Field(min_length=8, max_length=30)

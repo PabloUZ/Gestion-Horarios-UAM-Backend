@@ -1,8 +1,11 @@
 from fastapi import FastAPI
 from os import getenv
 
+from .middlewares.error_handler import ErrorHandler
+
 from .config.database import Base, engine
 
+from .users.routers.auth import router as auth_router
 from .users.routers.users import router as user_router
 from .users.routers.roles import router as role_router
 from .users.routers.permissions import router as perm_router
@@ -17,6 +20,7 @@ app = FastAPI(root_path=f"/api/v{api_version}")
 
 Base.metadata.create_all(bind=engine)
 
+app.add_middleware(ErrorHandler)
 
 @app.get('/')
 def root():
@@ -25,6 +29,8 @@ def root():
         "message": "Hello World"
     }
 
+
+app.include_router(auth_router)
 app.include_router(user_router)
 app.include_router(role_router)
 app.include_router(perm_router)

@@ -1,6 +1,8 @@
 from fastapi import APIRouter, Body, Depends, Path, Query
 from typing import Optional
 
+from src.api.middlewares.has_permission import HasPermission
+from src.api.middlewares.has_access import has_access
 from src.api.users.schemas.users import ChangePassword, CreateUser, UpdateUser
 from src.api.users.repositories.users import add_roles, change_password, delete_user, get_single, post_user, get_all_users, remove_roles, update_user
 
@@ -11,7 +13,7 @@ router = APIRouter(prefix="/users")
 def create_user(user: CreateUser = Body()):
     return post_user(user)
 
-@router.get('')
+@router.get('', dependencies=[Depends(has_access), Depends(HasPermission("CREATE_USER"))])
 def list_users(email: Optional[str] = Query(default=None), active: Optional[str] = Query(default=None), first_name: Optional[str] = Query(default=None), last_name: Optional[str] = Query(default=None)):
     return get_all_users(email, active, first_name, last_name)
 
