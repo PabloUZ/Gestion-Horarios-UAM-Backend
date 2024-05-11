@@ -10,7 +10,7 @@ from src.api.academic.models.program import Program as ProgramModel
 from fastapi.encoders import jsonable_encoder
 from fastapi.params import Query
 from fastapi import status
-router = APIRouter(prefix="/api/v1/program", tags=["Program"])
+router = APIRouter(prefix="/program", tags=["Program"])
 
 @router.get("/", response_model=List[Program], description="Get all programs")
 def get_programs(offset:int = Query(default=None,min = 0), limit:int = Query(default=None,min = 1)) -> List[Program]:

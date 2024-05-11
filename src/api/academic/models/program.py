@@ -8,5 +8,5 @@ class Program(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(length=50), nullable=False)
     faculty_id = Column(Integer, ForeignKey("faculty.id"), nullable=False)
-    
-    faculty = relationship("Faculty", back_populates="program")
+    study_plan = relationship("StudyPlan", back_populates="programs")
+    faculty = relationship("Faculty", back_populates="programs")

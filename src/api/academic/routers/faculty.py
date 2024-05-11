@@ -10,7 +10,7 @@ from src.api.academic.models.faculty import Faculty as FacultyModel
 from fastapi.encoders import jsonable_encoder
 from fastapi.params import Query
 from fastapi import status
-router = APIRouter(prefix="/api/v1/faculty", tags=["Faculty"])
+router = APIRouter(prefix="/faculty", tags=["Faculty"])
 
 @router.get("/", response_model=List[Faculty], description="Get all faculties")
 def get_faculties(offset:int = Query(default=None,min = 0), limit:int = Query(default=None,min = 1)) -> List[Faculty]:

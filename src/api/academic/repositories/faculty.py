@@ -7,7 +7,7 @@ class FacultyRepository():
         self.db = db
         
     def get_faculties(self, offset:int , limit:int) -> List[Faculty]:
-        faculties = self.db.query(FacultyModel).offset(offset).limit(limit).all()
+        faculties = self.db.query(FacultyModel)
         if(offset is not None):
             faculties = faculties.offset(offset)
         if (limit is not None):

@@ -9,4 +9,4 @@ class AcademicHistory(Base):
     created_at = Column(String(length=100), nullable=False)
     study_plan_id = Column(Integer, ForeignKey("study_plan.id"), nullable=False)
     
-    study_plan = relationship("StudyPlan", back_populates="academic_history")
+    study_plans = relationship("StudyPlan", back_populates="academic_history")

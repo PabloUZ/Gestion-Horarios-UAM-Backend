@@ -11,7 +11,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.params import Query
 from fastapi import status
 
-router = APIRouter(prefix="/api/v1/study_plan", tags=["Study Plan"])
+router = APIRouter(prefix="/study_plan", tags=["Study Plan"])
 
 @router.get("/", response_model=List[StudyPlan], description="Get all study plans")
 def get_study_plans(offset:int = Query(default=None,min = 0), limit:int = Query(default=None,min = 1)) -> List[StudyPlan]:
