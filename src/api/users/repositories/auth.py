@@ -26,7 +26,7 @@ def handle_login(payload):
     to_encode['role']['permissions'] = []
     for p in jsonable_encoder(user.role.permissions):
         to_encode['role']['permissions'].append(p["name"])
-    encoded = JWT.encode(to_encode, 1)
+    encoded = JWT.encode(to_encode, 60)
     return JSONResponse({
         "status": 200,
         "token": encoded
