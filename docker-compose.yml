@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  app-back:
+    container_name: gestion_horarios-back
+    image: img-gestion-horarios-back:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "3500:3500"
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    container_name: gestion_horarios_db
+    env_file:
+      - .env
+    restart: no
+    ports:
+      - "3307:3306"
+    volumes:
+      - gestion_horarios_db_vol:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+volumes:
+  gestion_horarios_db_vol:
