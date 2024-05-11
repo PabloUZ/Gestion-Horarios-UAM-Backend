@@ -7,3 +7,4 @@ class Faculty(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(length=50), nullable=False)
+    programs = relationship("Program", back_populates="faculty")
