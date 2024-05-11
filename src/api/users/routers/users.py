@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Body, Depends, Path, Query
+from fastapi import APIRouter, Body, Depends, Path, Query, Request
 from typing import Optional
 
 from src.api.middlewares.has_permission import HasPermission
@@ -9,19 +9,19 @@ from src.api.users.repositories.users import add_roles, change_password, delete_
 router = APIRouter(prefix="/users")
 
 
-@router.post('')
+@router.post('' ) #dependencies=[Depends(has_access), Depends(HasPermission("CREATE_USER"))]
 def create_user(user: CreateUser = Body()):
     return post_user(user)
 
-@router.get('', dependencies=[Depends(has_access), Depends(HasPermission("CREATE_USER"))])
+@router.get('', dependencies=[Depends(has_access), Depends(HasPermission("GET_ALL_USERS"))])
 def list_users(email: Optional[str] = Query(default=None), active: Optional[str] = Query(default=None), first_name: Optional[str] = Query(default=None), last_name: Optional[str] = Query(default=None)):
     return get_all_users(email, active, first_name, last_name)
 
-@router.get('/{cc}')
+@router.get('/{cc}', dependencies=[Depends(has_access), Depends(HasPermission("GET_SINGLE_USER", True))])
 def user_detail(cc = Path()):
     return get_single(cc)
 
-@router.put('/{cc}')
+@router.put('/{cc}', dependencies=[Depends(has_access), Depends(HasPermission("UPDATE_USER", True))])
 def update_user(cc = Path(), user: UpdateUser = Body()):
     return update_user(cc, user)
 

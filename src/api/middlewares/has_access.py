@@ -13,6 +13,9 @@ async def has_access(credentials: Request):
 
         if payload['exp'] < unix:
             raise HTTPException(status_code=401, detail="Unauthorized")
-        return payload
+        return {
+            "req": credentials,
+            "payload": payload
+        }
     except:
         raise HTTPException(status_code=401, detail="Unauthorized")

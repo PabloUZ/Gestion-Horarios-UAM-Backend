@@ -3,12 +3,21 @@ from src.api.middlewares.has_access import has_access
 
 
 class HasPermission:
-    def __init__(self, name: str):
+    def __init__(self, name: str, allow_own = False):
         self.name = name
-    def __call__(self, payload = Depends(has_access)):
+        self.allow_own = allow_own
+    def __call__(self, data = Depends(has_access)):
         try:
-            if self.name not in payload['role']['permissions']:
-                raise HTTPException(status_code=403, detail="Forbidden")
-            return payload
+            if data['payload']['role'] is not None and self.name not in data['payload']['role']['permissions']:
+                if not self.allow_own:
+                    raise HTTPException(status_code=403, detail="Forbidden")
+                elif data['req'].path_params['cc'] != data['payload']['cc']:
+                    raise HTTPException(status_code=403, detail="Forbidden")
+            elif data['payload']['role'] is None:
+                if not self.allow_own:
+                    raise HTTPException(status_code=403, detail="Forbidden")
+                elif data['req'].path_params['cc'] != data['payload']['cc']:
+                    raise HTTPException(status_code=403, detail="Forbidden")
+            return data['payload']
         except:
             raise HTTPException(status_code=403, detail="Forbidden")

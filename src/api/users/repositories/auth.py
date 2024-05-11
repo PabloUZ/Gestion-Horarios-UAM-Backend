@@ -22,10 +22,13 @@ def handle_login(payload):
         }, 401)
     to_encode = jsonable_encoder(user)
     del to_encode['password']
-    to_encode['role'] = jsonable_encoder(user.role)
-    to_encode['role']['permissions'] = []
-    for p in jsonable_encoder(user.role.permissions):
-        to_encode['role']['permissions'].append(p["name"])
+    if user.role:
+        to_encode['role'] = jsonable_encoder(user.role)
+        to_encode['role']['permissions'] = []
+        for p in jsonable_encoder(user.role.permissions):
+            to_encode['role']['permissions'].append(p["name"])
+    else:
+        to_encode['role'] = None
     encoded = JWT.encode(to_encode, 60)
     return JSONResponse({
         "status": 200,
