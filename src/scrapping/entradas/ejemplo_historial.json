@@ -1,0 +1,428 @@
+{
+    "usuario": "XXXXXX",
+    "nombre": "FLOREZ PEPITO",
+    "codigo": "1020XXXXX",
+    "plan": "1020",
+    "historial": [
+        {
+            "periodo": "2023-03",
+            "codigo": "114081",
+            "nombre": "FUNDAMENTOS BASICOS",
+            "creditos": 0,
+            "nota": null
+        },
+        {
+            "periodo": "2023-03",
+            "codigo": "103136",
+            "nombre": "PRACTICA EMPRESARIAL",
+            "creditos": 9,
+            "nota": 5
+        },
+        {
+            "periodo": "2023-03",
+            "codigo": "101241",
+            "nombre": "EMPRENDIMIENTO",
+            "creditos": 3,
+            "nota": 4.4
+        },
+        {
+            "periodo": "2023-02",
+            "codigo": "103118",
+            "nombre": "GERENCIA DE PROYECTOS TECNOLOGICOS (GERENCIA DE PROYECTO)",
+            "creditos": 2,
+            "nota": 4.9
+        },
+        {
+            "periodo": "2023-01",
+            "codigo": "100076",
+            "nombre": "PAZ Y COMPETITIVIDAD",
+            "creditos": 12,
+            "nota": 5
+        },
+        {
+            "periodo": "2023-01",
+            "codigo": "105041",
+            "nombre": "DESARROLLO SOSTENIBLE",
+            "creditos": 2,
+            "nota": 4.9
+        },
+        {
+            "periodo": "2022-03",
+            "codigo": "109104",
+            "nombre": "SISTEMAS EMBEBIDOS",
+            "creditos": 3,
+            "nota": 5
+        },
+        {
+            "periodo": "2022-03",
+            "codigo": "109189",
+            "nombre": "PROGRAMACION DE DISPOSITIVOS MOVILES",
+            "creditos": 3,
+            "nota": 5
+        },
+        {
+            "periodo": "2022-03",
+            "codigo": "103135",
+            "nombre": "PROYECTO DE DESARROLLO DE SOFTWARE",
+            "creditos": 2,
+            "nota": 5
+        },
+        {
+            "periodo": "2022-03",
+            "codigo": "109177",
+            "nombre": "FINANZAS PERSONALES",
+            "creditos": 3,
+            "nota": 4.8
+        },
+        {
+            "periodo": "2022-03",
+            "codigo": "103117",
+            "nombre": "INTELIGENCIA ARTIFICIAL",
+            "creditos": 3,
+            "nota": 3.9
+        },
+        {
+            "periodo": "2022-01",
+            "codigo": "100031",
+            "nombre": "PROCESO DE INVESTIGACION II",
+            "creditos": 3,
+            "nota": 5
+        },
+        {
+            "periodo": "2022-01",
+            "codigo": "109184",
+            "nombre": "ELECTRONICA DIGITAL Y ARQUITECTURA DE COMPUTADORES",
+            "creditos": 3,
+            "nota": 5
+        },
+        {
+            "periodo": "2022-01",
+            "codigo": "109181",
+            "nombre": "BASES DE DATOS II",
+            "creditos": 2,
+            "nota": 4.7
+        },
+        {
+            "periodo": "2022-01",
+            "codigo": "109188",
+            "nombre": "CIENCIA DE LOS DATOS",
+            "creditos": 3,
+            "nota": 4.6
+        },
+        {
+            "periodo": "2022-01",
+            "codigo": "103127",
+            "nombre": "ENFASIS PROFESIONAL",
+            "creditos": 3,
+            "nota": 4.5
+        },
+        {
+            "periodo": "2022-01",
+            "codigo": "109185",
+            "nombre": "MODELAMIENTO Y SIMULACION",
+            "creditos": 3,
+            "nota": 4.4
+        },
+        {
+            "periodo": "2021-03",
+            "codigo": "109057",
+            "nombre": "METODOS NUMERICOS",
+            "creditos": 3,
+            "nota": 5
+        },
+        {
+            "periodo": "2021-03",
+            "codigo": "100030",
+            "nombre": "PROCESO DE INVESTIGACION I",
+            "creditos": 3,
+            "nota": 5
+        },
+        {
+            "periodo": "2021-03",
+            "codigo": "109187",
+            "nombre": "PROGRAMACION FROND END",
+            "creditos": 3,
+            "nota": 4.8
+        },
+        {
+            "periodo": "2021-03",
+            "codigo": "109186",
+            "nombre": "PROCESADORES DE LENGUAJES",
+            "creditos": 2,
+            "nota": 4.4
+        },
+        {
+            "periodo": "2021-03",
+            "codigo": "103021",
+            "nombre": "DISEÑO DE ALGORITMOS",
+            "creditos": 3,
+            "nota": 4.2
+        },
+        {
+            "periodo": "2021-03",
+            "codigo": "104033",
+            "nombre": "ECUACIONES DIFERENCIALES",
+            "creditos": 3,
+            "nota": 3.7
+        },
+        {
+            "periodo": "2021-02",
+            "codigo": "104036",
+            "nombre": "ESTADISTICA Y PROBABILIDAD",
+            "creditos": 3,
+            "nota": 4.5
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "103002",
+            "nombre": "COMPUTACION BASICA",
+            "creditos": 3,
+            "nota": 5
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "100010",
+            "nombre": "FUNDAMENTOS DE INGENIERIA",
+            "creditos": 2,
+            "nota": 5
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "151610",
+            "nombre": "INGLES I",
+            "creditos": 1,
+            "nota": 5
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "151606",
+            "nombre": "INGLES VI",
+            "creditos": 1,
+            "nota": 5
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "151605",
+            "nombre": "INGLES V",
+            "creditos": 1,
+            "nota": 5
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "151604",
+            "nombre": "INGLES IV",
+            "creditos": 1,
+            "nota": 5
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "151603",
+            "nombre": "INGLES III",
+            "creditos": 1,
+            "nota": 5
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "151602",
+            "nombre": "INGLES II",
+            "creditos": 1,
+            "nota": 5
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "104029",
+            "nombre": "ALGEBRA LINEAL",
+            "creditos": 3,
+            "nota": 4.7
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "103093",
+            "nombre": "INGENIERIA DEL SOFTWARE II",
+            "creditos": 3,
+            "nota": 4.7
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "103125",
+            "nombre": "SISTEMAS DE INFORMACION Y ORGANIZACIONES",
+            "creditos": 3,
+            "nota": 4.7
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "104030",
+            "nombre": "CALCULO DIFERENCIAL",
+            "creditos": 3,
+            "nota": 4.6
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "104027",
+            "nombre": "MATEMATICAS DISCRETAS",
+            "creditos": 4,
+            "nota": 4.6
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "105094",
+            "nombre": "PENSAMIENTO LOGICO",
+            "creditos": 3,
+            "nota": 4.5
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "105042",
+            "nombre": "CULTURA POLITICA(CONST POLITICA)",
+            "creditos": 2,
+            "nota": 4.4
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "105038",
+            "nombre": "ETICA",
+            "creditos": 2,
+            "nota": 4.4
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "100005",
+            "nombre": "CURSO LIBRE I",
+            "creditos": 3,
+            "nota": 4.4
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "104066",
+            "nombre": "MATEMATICAS BASICAS",
+            "creditos": 4,
+            "nota": 4.4
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "103027",
+            "nombre": "SISTEMAS OPERATIVOS (TECNOLOGIA II)",
+            "creditos": 3,
+            "nota": 4.4
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "103008",
+            "nombre": "FUNDAMENTOS P.O.O. (TALLER II)",
+            "creditos": 3,
+            "nota": 4.4
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "104031",
+            "nombre": "CALCULO INTEGRAL",
+            "creditos": 3,
+            "nota": 4.3
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "103004",
+            "nombre": "TEORIA DE SISTEMAS",
+            "creditos": 3,
+            "nota": 4.3
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "109183",
+            "nombre": "PROGRAMACION BACK END",
+            "creditos": 3,
+            "nota": 4.3
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "103022",
+            "nombre": "INGENIERIA DE SOFTWARE I",
+            "creditos": 3,
+            "nota": 4.3
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "109182",
+            "nombre": "PARADIGMAS DE LENGUAJES",
+            "creditos": 3,
+            "nota": 4.1
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "100059",
+            "nombre": "COMPETENCIAS COMUNICATIVAS",
+            "creditos": 3,
+            "nota": 4.1
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "104032",
+            "nombre": "CALCULO VECTORIAL",
+            "creditos": 3,
+            "nota": 4.1
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "105036",
+            "nombre": "FILOSOFIA DE LA CIENCIA",
+            "creditos": 2,
+            "nota": 4.1
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "103011",
+            "nombre": "ESTRUCTURA DE DATOS",
+            "creditos": 3,
+            "nota": 4
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "103126",
+            "nombre": "REDES LAN",
+            "creditos": 3,
+            "nota": 3.8
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "109180",
+            "nombre": "BASES DE DATOS I",
+            "creditos": 3,
+            "nota": 3.8
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "103018",
+            "nombre": "PROGRAMACION ORIENTADA A OBJETOS",
+            "creditos": 3,
+            "nota": 3.8
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "109178",
+            "nombre": "FISICA MECANICA",
+            "creditos": 4,
+            "nota": 3.7
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "109009",
+            "nombre": "CIRCUITOS I",
+            "creditos": 3,
+            "nota": 3.7
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "103007",
+            "nombre": "TECNICAS DE PROGRAMACION",
+            "creditos": 3,
+            "nota": 3.7
+        },
+        {
+            "periodo": "2021-01",
+            "codigo": "109179",
+            "nombre": "ELECTRICIDAD Y MAGNETISMO",
+            "creditos": 4,
+            "nota": 3.5
+        }
+    ]
+}

@@ -1,0 +1,1132 @@
+[
+    {
+        "codigo": "1020",
+        "jornada": "D",
+        "asignaturas": [
+            {
+                "codigo": "104066",
+                "creditos": 4,
+                "semestre": 1
+            },
+            {
+                "codigo": "104030",
+                "requisitos": [
+                    "104066"
+                ],
+                "creditos": 3,
+                "semestre": 2
+            },
+            {
+                "codigo": "109178",
+                "requisitos": [
+                    "104030"
+                ],
+                "creditos": 4,
+                "semestre": 3
+            },
+            {
+                "codigo": "109179",
+                "requisitos": [
+                    "109178"
+                ],
+                "creditos": 4,
+                "semestre": 4
+            },
+            {
+                "codigo": "104033",
+                "requisitos": [
+                    "104031"
+                ],
+                "creditos": 3,
+                "semestre": 5
+            },
+            {
+                "codigo": "100010",
+                "creditos": 2,
+                "semestre": 1
+            },
+            {
+                "codigo": "104029",
+                "creditos": 3,
+                "semestre": 2
+            },
+            {
+                "codigo": "104031",
+                "requisitos": [
+                    "104030"
+                ],
+                "creditos": 3,
+                "semestre": 3
+            },
+            {
+                "codigo": "104036",
+                "requisitos": [
+                    "104031"
+                ],
+                "creditos": 3,
+                "semestre": 4
+            },
+            {
+                "codigo": "109057",
+                "requisitos": [
+                    "104036",
+                    "104032"
+                ],
+                "creditos": 3,
+                "semestre": 5
+            },
+            {
+                "codigo": "104032",
+                "requisitos": [
+                    "104031"
+                ],
+                "creditos": 3,
+                "semestre": 4
+            },
+            {
+                "codigo": "109184",
+                "requisitos": [
+                    "109179"
+                ],
+                "creditos": 3,
+                "semestre": 6
+            },
+            {
+                "codigo": "109104",
+                "requisitos": [
+                    "109184"
+                ],
+                "creditos": 3,
+                "semestre": 7
+            },
+            {
+                "codigo": "103004",
+                "creditos": 3,
+                "semestre": 1
+            },
+            {
+                "codigo": "109185",
+                "requisitos": [
+                    "109057"
+                ],
+                "creditos": 3,
+                "semestre": 6
+            },
+            {
+                "codigo": "103127",
+                "requisitos": [
+                    "103126"
+                ],
+                "creditos": 3,
+                "semestre": 7
+            },
+            {
+                "codigo": "103125",
+                "requisitos": [
+                    "103004"
+                ],
+                "creditos": 3,
+                "semestre": 8
+            },
+            {
+                "codigo": "103118",
+                "requisitos": [
+                    "103093"
+                ],
+                "creditos": 2,
+                "semestre": 10
+            },
+            {
+                "codigo": "104027",
+                "creditos": 4,
+                "semestre": 3
+            },
+            {
+                "codigo": "109182",
+                "requisitos": [
+                    "104029",
+                    "104027",
+                    "103018"
+                ],
+                "creditos": 3,
+                "semestre": 5
+            },
+            {
+                "codigo": "109186",
+                "requisitos": [
+                    "109182"
+                ],
+                "creditos": 2,
+                "semestre": 6
+            },
+            {
+                "codigo": "109188",
+                "requisitos": [
+                    "109057"
+                ],
+                "creditos": 3,
+                "semestre": 7
+            },
+            {
+                "codigo": "103117",
+                "requisitos": [
+                    "109057"
+                ],
+                "creditos": 3,
+                "semestre": 8
+            },
+            {
+                "codigo": "109180",
+                "requisitos": [
+                    "103011"
+                ],
+                "creditos": 3,
+                "semestre": 4
+            },
+            {
+                "codigo": "103126",
+                "req_creditos": 56,
+                "creditos": 3,
+                "semestre": 5
+            },
+            {
+                "codigo": "103021",
+                "requisitos": [
+                    "109182"
+                ],
+                "creditos": 3,
+                "semestre": 6
+            },
+            {
+                "codigo": "109181",
+                "requisitos": [
+                    "109180"
+                ],
+                "creditos": 2,
+                "semestre": 7
+            },
+            {
+                "codigo": "103007",
+                "requisitos": [
+                    "103002"
+                ],
+                "creditos": 3,
+                "semestre": 2
+            },
+            {
+                "codigo": "103011",
+                "requisitos": [
+                    "103007"
+                ],
+                "creditos": 3,
+                "semestre": 3
+            },
+            {
+                "codigo": "103027",
+                "requisitos": [
+                    "103011"
+                ],
+                "creditos": 3,
+                "semestre": 4
+            },
+            {
+                "codigo": "109183",
+                "requisitos": [
+                    "109180"
+                ],
+                "creditos": 3,
+                "semestre": 5
+            },
+            {
+                "codigo": "109187",
+                "requisitos": [
+                    "109183"
+                ],
+                "creditos": 3,
+                "semestre": 6
+            },
+            {
+                "codigo": "109189",
+                "requisitos": [
+                    "109183"
+                ],
+                "creditos": 3,
+                "semestre": 8
+            },
+            {
+                "codigo": "103136",
+                "requisitos": [
+                    "109189",
+                    "103135"
+                ],
+                "creditos": 9,
+                "semestre": 10
+            },
+            {
+                "codigo": "103002",
+                "creditos": 3,
+                "semestre": 1
+            },
+            {
+                "codigo": "103008",
+                "requisitos": [
+                    "103002"
+                ],
+                "creditos": 3,
+                "semestre": 2
+            },
+            {
+                "codigo": "103018",
+                "requisitos": [
+                    "103007",
+                    "103008"
+                ],
+                "creditos": 3,
+                "semestre": 3
+            },
+            {
+                "codigo": "103022",
+                "requisitos": [
+                    "103018"
+                ],
+                "creditos": 3,
+                "semestre": 4
+            },
+            {
+                "codigo": "103093",
+                "requisitos": [
+                    "103022"
+                ],
+                "creditos": 3,
+                "semestre": 5
+            },
+            {
+                "codigo": "103135",
+                "requisitos": [
+                    "103093",
+                    "109187"
+                ],
+                "creditos": 2,
+                "semestre": 8
+            },
+            {
+                "codigo": "114081",
+                "creditos": 0,
+                "semestre": 1
+            },
+            {
+                "codigo": "101241",
+                "creditos": 3,
+                "semestre": 2
+            },
+            {
+                "codigo": "105036",
+                "req_creditos": 50,
+                "creditos": 2,
+                "semestre": 6
+            },
+            {
+                "codigo": "100030",
+                "requisitos": [
+                    "105036"
+                ],
+                "creditos": 3,
+                "semestre": 7
+            },
+            {
+                "codigo": "100063",
+                "req_creditos": 140,
+                "creditos": 12,
+                "semestre": 9
+            },
+            {
+                "codigo": "100031",
+                "requisitos": [
+                    "100030"
+                ],
+                "creditos": 3,
+                "semestre": 10
+            },
+            {
+                "codigo": "100059",
+                "creditos": 3,
+                "semestre": 1
+            },
+            {
+                "codigo": "105038",
+                "creditos": 2,
+                "semestre": 2
+            },
+            {
+                "codigo": "105042",
+                "creditos": 2,
+                "semestre": 8
+            },
+            {
+                "codigo": "105041",
+                "req_creditos": 140,
+                "creditos": 2,
+                "semestre": 9
+            },
+            {
+                "codigo": "151601",
+                "creditos": 1,
+                "semestre": 1
+            },
+            {
+                "codigo": "151602",
+                "requisitos": [
+                    "151601"
+                ],
+                "creditos": 1,
+                "semestre": 2
+            },
+            {
+                "codigo": "151603",
+                "requisitos": [
+                    "151602"
+                ],
+                "creditos": 1,
+                "semestre": 3
+            },
+            {
+                "codigo": "151604",
+                "requisitos": [
+                    "151603"
+                ],
+                "creditos": 1,
+                "semestre": 6
+            },
+            {
+                "codigo": "151605",
+                "requisitos": [
+                    "151604"
+                ],
+                "creditos": 1,
+                "semestre": 7
+            },
+            {
+                "codigo": "151606",
+                "requisitos": [
+                    "151605"
+                ],
+                "creditos": 1,
+                "semestre": 8
+            }
+        ]
+    },
+    {
+        "codigo": "0162",
+        "jornada": "D",
+        "asignaturas": [
+            {
+                "codigo": "104066",
+                "creditos": 4,
+                "semestre": 1
+            },
+            {
+                "codigo": "104030",
+                "requisitos": [
+                    "104066"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "104074",
+                "requisitos": [
+                    "104030"
+                ],
+                "creditos": 4
+            },
+            {
+                "codigo": "104075",
+                "requisitos": [
+                    "104074"
+                ],
+                "creditos": 4
+            },
+            {
+                "codigo": "104076",
+                "requisitos": [
+                    "104075"
+                ],
+                "creditos": 4
+            },
+            {
+                "codigo": "100010",
+                "creditos": 2
+            },
+            {
+                "codigo": "104038",
+                "creditos": 3
+            },
+            {
+                "codigo": "104031",
+                "requisitos": [
+                    "104030"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "104036",
+                "requisitos": [
+                    "104031"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "104033",
+                "requisitos": [
+                    "104031"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "104029",
+                "creditos": 3
+            },
+            {
+                "codigo": "104032",
+                "requisitos": [
+                    "104031"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "109001",
+                "requisitos": [
+                    "104076"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "109104",
+                "requisitos": [
+                    "109001"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103004",
+                "creditos": 3
+            },
+            {
+                "codigo": "103019",
+                "requisitos": [
+                    "104033"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103125",
+                "requisitos": [
+                    "103004"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103118",
+                "creditos": 2
+            },
+            {
+                "codigo": "104003",
+                "creditos": 3
+            },
+            {
+                "codigo": "104040",
+                "requisitos": [
+                    "104029"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "104063",
+                "requisitos": [
+                    "104040"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103126",
+                "req_creditos": 80,
+                "creditos": 3
+            },
+            {
+                "codigo": "103034",
+                "requisitos": [
+                    "103126"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103012",
+                "requisitos": [
+                    "103011"
+                ],
+                "creditos": 2
+            },
+            {
+                "codigo": "103086",
+                "requisitos": [
+                    "103012"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103037",
+                "requisitos": [
+                    "103086"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103021",
+                "requisitos": [
+                    "103086",
+                    "103012"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103007",
+                "requisitos": [
+                    "103002"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103011",
+                "requisitos": [
+                    "103007"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103013",
+                "requisitos": [
+                    "103011"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103027",
+                "requisitos": [
+                    "103013"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103029",
+                "requisitos": [
+                    "103012"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103134",
+                "requisitos": [
+                    "103029"
+                ],
+                "creditos": 2
+            },
+            {
+                "codigo": "103136",
+                "requisitos": [
+                    "103029",
+                    "103135"
+                ],
+                "creditos": 9
+            },
+            {
+                "codigo": "103002",
+                "creditos": 3
+            },
+            {
+                "codigo": "103008",
+                "requisitos": [
+                    "103002"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103018",
+                "requisitos": [
+                    "103007",
+                    "103008"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103022",
+                "requisitos": [
+                    "103018"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103135",
+                "requisitos": [
+                    "103022"
+                ],
+                "creditos": 2
+            },
+            {
+                "codigo": "103093",
+                "requisitos": [
+                    "103135"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "104070",
+                "creditos": 0
+            },
+            {
+                "codigo": "101241",
+                "creditos": 3
+            },
+            {
+                "codigo": "105036",
+                "req_creditos": 50,
+                "creditos": 2
+            },
+            {
+                "codigo": "100030",
+                "requisitos": [
+                    "105036"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "100031",
+                "requisitos": [
+                    "100030"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "100063",
+                "req_creditos": 149,
+                "creditos": 12
+            },
+            {
+                "codigo": "105042",
+                "creditos": 2
+            },
+            {
+                "codigo": "100059",
+                "creditos": 3
+            },
+            {
+                "codigo": "105038",
+                "creditos": 2
+            },
+            {
+                "codigo": "105041",
+                "creditos": 2
+            },
+            {
+                "codigo": "151601",
+                "creditos": 1
+            },
+            {
+                "codigo": "151602",
+                "requisitos": [
+                    "151601"
+                ],
+                "creditos": 1
+            },
+            {
+                "codigo": "151603",
+                "requisitos": [
+                    "151602"
+                ],
+                "creditos": 1
+            },
+            {
+                "codigo": "151604",
+                "requisitos": [
+                    "151603"
+                ],
+                "creditos": 1
+            },
+            {
+                "codigo": "151605",
+                "requisitos": [
+                    "151604"
+                ],
+                "creditos": 1
+            },
+            {
+                "codigo": "151606",
+                "requisitos": [
+                    "151605"
+                ],
+                "creditos": 1
+            }
+        ]
+    },
+    {
+        "codigo": "0192",
+        "jornada": "N",
+        "asignaturas": [
+            {
+                "codigo": "104066",
+                "creditos": 4,
+                "semestre": 1
+            },
+            {
+                "codigo": "104030",
+                "requisitos": [
+                    "104066"
+                ],
+                "creditos": 3,
+                "semestre": 2
+            },
+            {
+                "codigo": "104074",
+                "requisitos": [
+                    "104030"
+                ],
+                "creditos": 4,
+                "semestre": 3
+            },
+            {
+                "codigo": "104075",
+                "requisitos": [
+                    "104074"
+                ],
+                "creditos": 4,
+                "semestre": 4
+            },
+            {
+                "codigo": "104076",
+                "requisitos": [
+                    "104075"
+                ],
+                "creditos": 4,
+                "semestre": 5
+            },
+            {
+                "codigo": "100010",
+                "creditos": 2,
+                "semestre": 1
+            },
+            {
+                "codigo": "104038",
+                "creditos": 3,
+                "semestre": 2
+            },
+            {
+                "codigo": "104031",
+                "requisitos": [
+                    "104030"
+                ],
+                "creditos": 3,
+                "semestre": 3
+            },
+            {
+                "codigo": "104036",
+                "requisitos": [
+                    "104031"
+                ],
+                "creditos": 3,
+                "semestre": 4
+            },
+            {
+                "codigo": "104033",
+                "requisitos": [
+                    "104031"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "104029",
+                "creditos": 3
+            },
+            {
+                "codigo": "104032",
+                "requisitos": [
+                    "104031"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "109001",
+                "requisitos": [
+                    "104076"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "109104",
+                "requisitos": [
+                    "109001"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103004",
+                "creditos": 3
+            },
+            {
+                "codigo": "103019",
+                "requisitos": [
+                    "104033"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103125",
+                "requisitos": [
+                    "103004",
+                    "101241"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103118",
+                "requisitos": [
+                    "103093"
+                ],
+                "creditos": 2
+            },
+            {
+                "codigo": "104003",
+                "creditos": 3
+            },
+            {
+                "codigo": "104040",
+                "requisitos": [
+                    "104029"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "104063",
+                "requisitos": [
+                    "104040"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103126",
+                "req_creditos": 80,
+                "creditos": 3
+            },
+            {
+                "codigo": "103034",
+                "requisitos": [
+                    "103126"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103012",
+                "requisitos": [
+                    "103011"
+                ],
+                "creditos": 2
+            },
+            {
+                "codigo": "103086",
+                "requisitos": [
+                    "103012"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103037",
+                "requisitos": [
+                    "103086"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103021",
+                "requisitos": [
+                    "103086",
+                    "103012"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103007",
+                "requisitos": [
+                    "103002"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103011",
+                "requisitos": [
+                    "103007"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103013",
+                "requisitos": [
+                    "103011"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103027",
+                "requisitos": [
+                    "103013"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103029",
+                "requisitos": [
+                    "103012"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103134",
+                "requisitos": [
+                    "103029"
+                ],
+                "creditos": 2
+            },
+            {
+                "codigo": "103136",
+                "requisitos": [
+                    "103029",
+                    "103135"
+                ],
+                "creditos": 9
+            },
+            {
+                "codigo": "103002",
+                "creditos": 3
+            },
+            {
+                "codigo": "103008",
+                "requisitos": [
+                    "103002"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103018",
+                "requisitos": [
+                    "103007",
+                    "103008"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103022",
+                "requisitos": [
+                    "103018"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "103135",
+                "requisitos": [
+                    "103022"
+                ],
+                "creditos": 2
+            },
+            {
+                "codigo": "103093",
+                "requisitos": [
+                    "103135"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "104070",
+                "creditos": 0
+            },
+            {
+                "codigo": "101241",
+                "creditos": 3
+            },
+            {
+                "codigo": "105036",
+                "req_creditos": 50,
+                "creditos": 2
+            },
+            {
+                "codigo": "100030",
+                "requisitos": [
+                    "105036"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "100031",
+                "requisitos": [
+                    "100030"
+                ],
+                "creditos": 3
+            },
+            {
+                "codigo": "100063",
+                "req_creditos": 149,
+                "creditos": 12
+            },
+            {
+                "codigo": "105042",
+                "creditos": 2
+            },
+            {
+                "codigo": "100059",
+                "creditos": 3
+            },
+            {
+                "codigo": "105038",
+                "creditos": 2
+            },
+            {
+                "codigo": "105041",
+                "creditos": 2
+            },
+            {
+                "codigo": "151601",
+                "creditos": 1
+            },
+            {
+                "codigo": "151602",
+                "requisitos": [
+                    "151601"
+                ],
+                "creditos": 1
+            },
+            {
+                "codigo": "151603",
+                "requisitos": [
+                    "151602"
+                ],
+                "creditos": 1
+            },
+            {
+                "codigo": "151604",
+                "requisitos": [
+                    "151603"
+                ],
+                "creditos": 1
+            },
+            {
+                "codigo": "151605",
+                "requisitos": [
+                    "151604"
+                ],
+                "creditos": 1
+            },
+            {
+                "codigo": "151606",
+                "requisitos": [
+                    "151605"
+                ],
+                "creditos": 1
+            }
+        ]
+    }
+]

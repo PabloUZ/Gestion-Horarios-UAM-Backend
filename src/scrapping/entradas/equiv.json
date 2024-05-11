@@ -1,0 +1,90 @@
+[
+    {
+        "codigo": "151601",
+        "nombre": "INGLES I",
+        "equiv": [
+            "151001",
+            "151610",
+            "180006"
+        ]
+    },
+    {
+        "codigo": "151602",
+        "nombre": "INGLES II",
+        "equiv": [
+            "151002",
+            "151611",
+            "180011"
+        ]
+    },
+    {
+        "codigo": "151603",
+        "nombre": "INGLES III",
+        "equiv": [
+            "151003",
+            "151612",
+            "151703"
+        ]
+    },
+    {
+        "codigo": "151604",
+        "nombre": "INGLES IV",
+        "equiv": [
+            "151004",
+            "151613",
+            "151704"
+        ]
+    },
+    {
+        "codigo": "151605",
+        "nombre": "INGLES V",
+        "equiv": [
+            "151005",
+            "151614"
+        ]
+    },
+    {
+        "codigo": "151606",
+        "nombre": "INGLES VI",
+        "equiv": [
+            "151006",
+            "151615"
+        ]
+    },
+    {
+        "codigo": "104027",
+        "nombre": "Matematicas Discretas",
+        "equiv": [
+            "104003",
+            "104085"
+        ]
+    },
+    {
+        "codigo": "103127",
+        "nombre": "Énfasis Profesional",
+        "equiv": [
+            "103134"
+        ]
+    },
+    {
+        "codigo": "103127",
+        "nombre": "Fundamentos Basicos",
+        "equiv": [
+            "104070"
+        ]
+    },
+    {
+        "codigo": "109180",
+        "nombre": "Bases de Datos I",
+        "equiv": [
+            "103029"
+        ]
+    },
+    {
+        "codigo": "100063",
+        "nombre": "Paz y Competitividad",
+        "equiv": [
+            "100076"
+        ]
+    }
+]
