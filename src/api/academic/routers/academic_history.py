@@ -10,7 +10,7 @@ from src.api.academic.models.academic_history import AcademicHistory as Academic
 from fastapi.encoders import jsonable_encoder
 from fastapi.params import Query
 from fastapi import status
-router = APIRouter(prefix="/api/v1/academic_history", tags=["Academic History"])
+router = APIRouter(prefix="/academic_history", tags=["Academic History"])
 
 @router.get("/", response_model=List[AcademicHistory], description="Get all academic histories")
 def get_academic_histories(offset:int = Query(default=None,min = 0), limit:int = Query(default=None,min = 1)) -> List[AcademicHistory]:
