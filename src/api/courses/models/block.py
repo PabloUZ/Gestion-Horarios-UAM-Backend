@@ -8,5 +8,4 @@ class Block(Base):
     id              = Column(Integer, primary_key=True, autoincrement=True)      
     name            = Column(String(length=60))
 
-    rooms = relationship("Room", back_populates="blocks")
     room = relationship("Room", back_populates="block")

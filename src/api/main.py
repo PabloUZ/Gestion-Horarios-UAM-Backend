@@ -25,6 +25,20 @@ from .academic.models.academic_history import AcademicHistory
 from .academic.models.study_plan import StudyPlan
 
 
+from .courses.routers.room import room_router 
+from .courses.routers.block import blocks_router
+from .courses.routers.classtime import classtime_router
+from .courses.routers.course import course_router
+from .courses.routers.group import group_router
+from .courses.routers.professor import professor_router
+
+from .courses.models.block import Block
+from .courses.models.classtime import Classtime
+from .courses.models.course import Course
+from .courses.models.group import Group
+from .courses.models.professor import Professor
+from .courses.models.room import Room
+
 api_version = getenv("API_VERSION")
 
 app = FastAPI(root_path=f"/api/v{api_version}")
@@ -49,3 +63,9 @@ app.include_router(faculty_router)
 app.include_router(program_router)
 app.include_router(academic_history_router)
 app.include_router(study_plan_router)
+app.include_router(room_router)
+app.include_router(blocks_router)
+app.include_router(classtime_router)
+app.include_router(course_router)
+app.include_router(group_router)
+app.include_router(professor_router)
