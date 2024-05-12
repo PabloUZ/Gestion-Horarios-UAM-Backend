@@ -6,7 +6,7 @@ from src.api.config.database import Base
 class Course(Base):
     __tablename__ = "courses"
 
-    code = Column(String(length=4), primary_key=True, autoincrement=True)
+    code = Column(String(length=4), primary_key=True)
     name = Column(String(length=60))
     credits = Column(Integer)
     type_id = Column(Integer, ForeignKey('course_types.id'))

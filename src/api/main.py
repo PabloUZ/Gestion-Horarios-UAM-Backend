@@ -36,12 +36,13 @@ from .courses.routers.group import group_router
 from .courses.routers.professor import professor_router
 
 from .courses.models.block import Block
+from .courses.models.room import Room
+from .courses.models.professor import Professor
 from .courses.models.classtime import Classtime
 from .courses.models.course_type import CourseType
 from .courses.models.course import Course
 from .courses.models.group import Group
-from .courses.models.professor import Professor
-from .courses.models.room import Room
+
 
 api_version = getenv("API_VERSION")
 
