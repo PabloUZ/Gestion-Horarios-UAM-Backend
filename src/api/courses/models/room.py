@@ -7,6 +7,7 @@ class Room(Base):
 
     id                = Column(Integer, primary_key=True, autoincrement=True)      
     name              = Column(String(length=60))
+    block_id = Column(Integer)
 
     classtime = relationship("Classtime", back_populates="room")
-    block = relationship("Block", back_populates="room")
+    block = relationship("Block", back_populates="rooms")

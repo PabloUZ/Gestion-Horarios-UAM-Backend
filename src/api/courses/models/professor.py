@@ -8,5 +8,5 @@ class Professor(Base):
     id                = Column(Integer, primary_key=True, autoincrement=True)      
     name                = Column(String(length=60))
 
-    group = relationship("Group", back_populates="professor")
+    groups = relationship("Group", back_populates="professor")
     

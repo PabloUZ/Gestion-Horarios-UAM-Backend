@@ -25,13 +25,16 @@ from .academic.models.academic_history import AcademicHistory
 from .academic.models.study_plan import StudyPlan
 
 
+from .admin.routers.course import router as admin_router
+
+
 api_version = getenv("API_VERSION")
 
 app = FastAPI(root_path=f"/api/v{api_version}")
 
 Base.metadata.create_all(bind=engine)
 
-app.add_middleware(ErrorHandler)
+#app.add_middleware(ErrorHandler)
 
 @app.get('/')
 def root():
@@ -49,3 +52,4 @@ app.include_router(faculty_router)
 app.include_router(program_router)
 app.include_router(academic_history_router)
 app.include_router(study_plan_router)
+app.include_router(admin_router)
