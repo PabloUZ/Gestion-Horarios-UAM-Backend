@@ -30,7 +30,8 @@ class GroupRepository():
     
     def update_group(self, id: int, group: Group) -> dict:        
         element = self.db.query(GroupModel).filter(GroupModel.id == id).first()                
-        element.name = group.name     
+        element.name = group.name
+        element.number = group.number     
         self.db.commit()        
         self.db.refresh(element)        
         return element
