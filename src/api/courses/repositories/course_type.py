@@ -1,5 +1,5 @@
 from typing import List
-from api.courses.schemas.course_type import CourseType
+from src.api.courses.schemas.course_type import CourseType
 from src.api.courses.models.course_type import CourseType as CourseTypeModel
 from sqlalchemy import func
 

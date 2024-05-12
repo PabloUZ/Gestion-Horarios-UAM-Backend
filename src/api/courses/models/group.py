@@ -13,5 +13,5 @@ class Group(Base):
     proffesor_id = Column(Integer, ForeignKey('proffesors.id'), nullable=True)
 
     professor = relationship("Professor", back_populates="groups")
-    classtime = relationship("Classtime", back_populates="group")
+    classtimes = relationship("Classtime", back_populates="group")
     course = relationship("Course", back_populates="groups")
