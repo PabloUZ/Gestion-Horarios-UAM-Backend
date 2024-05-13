@@ -17,7 +17,7 @@ def get_courses()-> List[Course]:
     result = CourseRepository(db).get_all_courses()
     return JSONResponse(content=jsonable_encoder(result), status_code=status.HTTP_200_OK)
 
-@course_router.get('{id}',response_model=Course,description="Returns data of one specific course")
+@course_router.get('/{id}',response_model=Course,description="Returns data of one specific course")
 def get_courses(id: int = Path(ge=1)) -> Course:
     db = SessionLocal()
     element=  CourseRepository(db).get_course_by_id(id)
@@ -45,7 +45,7 @@ def create_categorie(course: Course = Body()) -> dict:
         status_code=status.HTTP_201_CREATED
     )
 
-@course_router.delete('{id}',response_model=dict,description="Removes specific course")
+@course_router.delete('/{id}',response_model=dict,description="Removes specific course")
 def remove_courses(id: int = Path(ge=1)) -> dict:
     db = SessionLocal()
     element = CourseRepository(db).get_course_by_id(id)
