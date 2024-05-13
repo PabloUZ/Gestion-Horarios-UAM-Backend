@@ -32,5 +32,5 @@ class Administrator:
         pass
 
 
-    def generate_courses(self):
-        self.course_fachade.generate_courses()
+    def generate_courses(self) -> dict:
+        return self.course_fachade.generate_courses()

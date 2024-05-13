@@ -7,10 +7,10 @@ class Classtime(Base):
 
     id                  = Column(Integer, primary_key=True, autoincrement=True)      
     day                 = Column(String(length=60))
-    start_hour          = Column(String(length=60))
-    end_hour            = Column(String(length=60))
-    start_minute        = Column(String(length=60))
-    end_minute          = Column(String(length=60))
+    start_hour          = Column(Integer)
+    end_hour            = Column(Integer)
+    start_minute        = Column(Integer)
+    end_minute          = Column(Integer)
     group_id = Column(Integer, ForeignKey('groups.id'), nullable=False)
     room_id = Column(Integer, ForeignKey('rooms.id'), nullable=True)
 

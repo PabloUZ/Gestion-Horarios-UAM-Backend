@@ -7,9 +7,9 @@ class Group(Base):
     __tablename__ = "groups"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(length=60))
+    name = Column(String(length=100))
     number = Column(Integer)
-    course_code = Column(String(length=4), ForeignKey('courses.code'), nullable=False)
+    course_code = Column(String(length=8), ForeignKey('courses.code'), nullable=False)
     proffesor_id = Column(Integer, ForeignKey('proffesors.id'), nullable=True)
 
     professor = relationship("Professor", back_populates="groups")

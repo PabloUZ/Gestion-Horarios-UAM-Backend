@@ -7,12 +7,16 @@ class ProfessorRepository():
     def __init__(self, db) -> None:        
         self.db = db
     
-    def get_all_courses(self) -> List[Professor]: 
+    def get_all_professors(self) -> List[Professor]: 
         query = self.db.query(ProfessorModel)
         return query.all()
     
     def get_professor_by_id(self, id: int ):
         element = self.db.query(ProfessorModel).filter(ProfessorModel.id == id).first()    
+        return element
+
+    def get_professor_by_name(self, name: str):
+        element = self.db.query(ProfessorModel).filter(ProfessorModel.name == name).first()
         return element
 
     def delete_professor(self, id: int ) -> dict: 
