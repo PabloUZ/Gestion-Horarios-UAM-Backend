@@ -6,7 +6,7 @@ class Professor(Base):
     __tablename__ = "proffesors"    
 
     id                = Column(Integer, primary_key=True, autoincrement=True)      
-    name                = Column(String(length=60))
+    name                = Column(String(length=60), unique=True)
 
     groups = relationship("Group", back_populates="professor")
     

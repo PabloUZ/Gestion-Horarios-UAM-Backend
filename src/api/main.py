@@ -44,6 +44,9 @@ from .courses.models.course import Course
 from .courses.models.group import Group
 
 
+from .config.startup import Startup
+
+
 api_version = getenv("API_VERSION")
 
 app = FastAPI(root_path=f"/api/v{api_version}")
