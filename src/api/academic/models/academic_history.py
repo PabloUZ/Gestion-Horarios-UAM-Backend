@@ -10,3 +10,4 @@ class AcademicHistory(Base):
     study_plan_id = Column(Integer, ForeignKey("study_plan.id"), nullable=False)
     
     study_plans = relationship("StudyPlan", back_populates="academic_history")
+    courses_approved = relationship("CourseApproved", back_populates="academic_history")

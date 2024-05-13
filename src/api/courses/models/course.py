@@ -9,5 +9,7 @@ class Course(Base):
     name                = Column(String(length=60))
     credits             = Column(Integer)
     type                = Column(String(length=60))
-
+    
     group = relationship("Group", back_populates="course")
+    courses_approved = relationship("CourseApproved", back_populates="course")
+    courses_offered = relationship("CourseOffered", back_populates="course")

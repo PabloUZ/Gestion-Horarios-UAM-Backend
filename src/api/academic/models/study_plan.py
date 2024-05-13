@@ -9,5 +9,7 @@ class StudyPlan(Base):
     name = Column(String(length=50), nullable=False)
     year = Column(Integer, nullable=False)
     program_id = Column(Integer, ForeignKey("program.id"), nullable=True)
+    
     academic_history = relationship("AcademicHistory", back_populates="study_plans")
     programs = relationship("Program", back_populates="study_plan")
+    courses_offered = relationship("CourseOffered", back_populates="study_plan")
