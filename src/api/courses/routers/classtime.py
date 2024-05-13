@@ -17,7 +17,7 @@ def get_classtimes()-> List[Classtime]:
     result = ClasstimeRepository(db).get_all_classtimes()
     return JSONResponse(content=jsonable_encoder(result), status_code=status.HTTP_200_OK)
 
-@classtime_router.get('{id}',response_model=Classtime,description="Returns data of one specific classtime")
+@classtime_router.get('/{id}',response_model=Classtime,description="Returns data of one specific classtime")
 def get_classtimes(id: int = Path(ge=1)) -> Classtime:
     db = SessionLocal()
     element=  ClasstimeRepository(db).get_classtime_by_id(id)
@@ -45,7 +45,7 @@ def create_categorie(classtime: Classtime = Body()) -> dict:
         status_code=status.HTTP_201_CREATED
     )
 
-@classtime_router.delete('{id}',response_model=dict,description="Removes specific classtime")
+@classtime_router.delete('/{id}',response_model=dict,description="Removes specific classtime")
 def remove_classtimes(id: int = Path(ge=1)) -> dict:
     db = SessionLocal()
     element = ClasstimeRepository(db).get_classtime_by_id(id)

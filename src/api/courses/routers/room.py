@@ -17,7 +17,7 @@ def get_rooms()-> List[Room]:
     result = RoomRepository(db).get_all_rooms()
     return JSONResponse(content=jsonable_encoder(result), status_code=status.HTTP_200_OK)
 
-@room_router.get('{id}',response_model=Room,description="Returns data of one specific room")
+@room_router.get('/{id}',response_model=Room,description="Returns data of one specific room")
 def get_rooms(id: int = Path(ge=1)) -> Room:
     db = SessionLocal()
     element=  RoomRepository(db).get_room_by_id(id)
@@ -45,7 +45,7 @@ def create_categorie(room: Room = Body()) -> dict:
         status_code=status.HTTP_201_CREATED
     )
 
-@room_router.delete('{id}',response_model=dict,description="Removes specific room")
+@room_router.delete('/{id}',response_model=dict,description="Removes specific room")
 def remove_rooms(id: int = Path(ge=1)) -> dict:
     db = SessionLocal()
     element = RoomRepository(db).get_room_by_id(id)
