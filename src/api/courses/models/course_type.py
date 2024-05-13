@@ -6,6 +6,6 @@ class CourseType(Base):
     __tablename__ = "course_types"    
 
     id              = Column(Integer, primary_key=True, autoincrement=True)      
-    name            = Column(String(length=60))
+    name            = Column(String(length=60), unique=True)
 
     courses = relationship("Course", back_populates="course_type")
