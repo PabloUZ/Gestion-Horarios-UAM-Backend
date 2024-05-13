@@ -14,6 +14,10 @@ class GroupRepository():
     def get_group_by_id(self, id: int ):
         element = self.db.query(GroupModel).filter(GroupModel.id == id).first()    
         return element
+    
+    def get_group_by_number_and_course(self, number: int, course_code: str ):
+        element = self.db.query(GroupModel).filter(GroupModel.number == number and GroupModel.course_code == course_code).first()    
+        return element
 
     def delete_group(self, id: int ) -> dict: 
         element: Group= self.db.query(GroupModel).filter(GroupModel.id == id).first()       

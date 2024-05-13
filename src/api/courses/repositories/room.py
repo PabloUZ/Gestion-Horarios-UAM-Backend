@@ -15,6 +15,10 @@ class RoomRepository():
         element = self.db.query(RoomModel).filter(RoomModel.id == id).first()    
         return element
 
+    def get_room_by_name(self, name: str ):
+        element = self.db.query(RoomModel).filter(RoomModel.name == name).first()    
+        return element
+
     def delete_room(self, id: int ) -> dict: 
         element: Room= self.db.query(RoomModel).filter(RoomModel.id == id).first()       
         self.db.delete(element)    

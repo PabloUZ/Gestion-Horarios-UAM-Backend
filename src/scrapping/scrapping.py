@@ -4,7 +4,7 @@ class Scrapping:
     def __init__(self):
         self.client = requests.Session()
         self.__username = 'martin.ostiosa'
-        self.__password = 'Kiara.1005'
+        self.__password = 'secret'
     
     def login(self):
         login_data = {

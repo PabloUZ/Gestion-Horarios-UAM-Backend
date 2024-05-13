@@ -79,3 +79,8 @@ app.include_router(courseType_router)
 app.include_router(course_router)
 app.include_router(group_router)
 app.include_router(professor_router)
+
+
+#startup = Startup()
+#startup.add_blocks()
+#startup.add_course_types()
