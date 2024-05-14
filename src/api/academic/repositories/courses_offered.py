@@ -14,8 +14,8 @@ class CourseOfferedRepository():
             courses_offered = courses_offered.limit(limit)
         return courses_offered.all()
     
-    def get_course_offered(self, course_id:int, study_plan_id:int) -> CoursesOffered:
-        course_offered = self.db.query(CoursesOfferedModel).filter(CoursesOfferedModel.course_id == course_id, CoursesOfferedModel.study_plan_id == study_plan_id).first()
+    def get_course_offered(self, course_offered_id:str) -> CoursesOffered:
+        course_offered = self.db.query(CoursesOfferedModel).filter(CoursesOfferedModel.id == course_offered_id).first()
         return course_offered
     
     def create_course_offered(self, course_offered:CoursesOffered) -> CoursesOffered:
@@ -25,14 +25,14 @@ class CourseOfferedRepository():
         self.db.refresh(new_course_offered)
         return new_course_offered
     
-    def update_course_offered(self, course_id:int, study_plan_id:int, course_offered:CoursesOffered) -> CoursesOffered:
-        upd_course_offered = self.db.query(CoursesOfferedModel).filter(CoursesOfferedModel.course_id == course_id, CoursesOfferedModel.study_plan_id == study_plan_id).first()
+    def update_course_offered(self, course_offered_id:int) -> CoursesOffered:
+        upd_course_offered = self.db.query(CoursesOfferedModel).filter(CoursesOfferedModel.id == course_offered_id).first()
         self.db.commit()
         self.db.refresh(upd_course_offered)
         return upd_course_offered
     
-    def delete_course_offered(self, course_id:int, study_plan_id:int) -> dict:
-        del_course_offered = self.db.query(CoursesOfferedModel).filter(CoursesOfferedModel.course_id == course_id, CoursesOfferedModel.study_plan_id == study_plan_id).first()
+    def delete_course_offered(self, course_offered_id:int) -> dict:
+        del_course_offered = self.db.query(CoursesOfferedModel).filter(CoursesOfferedModel.id == course_offered_id).first()
         self.db.delete(del_course_offered)
         self.db.commit()
         return del_course_offered

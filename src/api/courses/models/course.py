@@ -6,11 +6,12 @@ from src.api.config.database import Base
 class Course(Base):
     __tablename__ = "courses"
 
-    code                = Column(Integer, primary_key=True, autoincrement=True)      
-    name                = Column(String(length=60))
-    credits             = Column(Integer)
-    type                = Column(String(length=60))
+    code = Column(String(length=8), primary_key=True)
+    name = Column(String(length=100))
+    credits = Column(Integer, nullable=True)
+    type_id = Column(Integer, ForeignKey('course_types.id'), nullable=True)
 
-    group = relationship("Group", back_populates="course")
+    groups = relationship("Group", back_populates="course")
+    course_type = relationship("CourseType", back_populates="courses")
     courses_approved = relationship("CourseApproved", back_populates="course")
     courses_offered = relationship("CourseOffered", back_populates="course")
