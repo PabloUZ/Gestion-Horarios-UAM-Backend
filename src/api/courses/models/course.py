@@ -13,3 +13,5 @@ class Course(Base):
 
     groups = relationship("Group", back_populates="course")
     course_type = relationship("CourseType", back_populates="courses")
+    courses_approved = relationship("CourseApproved", back_populates="course")
+    courses_offered = relationship("CourseOffered", back_populates="course")

@@ -36,4 +36,4 @@ class FacultyRepository():
         del_faculty = self.db.query(FacultyModel).filter(FacultyModel.id == faculty_id).first()
         self.db.delete(del_faculty)
         self.db.commit()
-        return True
+        return del_faculty
