@@ -9,10 +9,6 @@ from src.api.users.schemas.permissions import CreatePermission, UpdatePermission
 router = APIRouter(prefix="/permissions")
 
 
-@router.post('')
-def create_perm(perm: CreatePermission):
-    return post_permission(perm)
-
 @router.get('', dependencies=[Depends(has_access), Depends(HasPermission("GET_ALL_PERMISSIONS"))])
 def list_perms(name: Optional[str] = Query(default=None)):
     return get_all_permissions(name)
@@ -20,11 +16,3 @@ def list_perms(name: Optional[str] = Query(default=None)):
 @router.get('/{name}', dependencies=[Depends(has_access), Depends(HasPermission("GET_SINGLE_PERMISSION"))])
 def perm_detail(name = Path()):
     return get_single(name)
-
-@router.put('/{name}')
-def update(name = Path(), perm: UpdatePermission = Body()):
-    return update_permission(name, perm)
-
-@router.delete('/{name}')
-def delete(name = Path()):
-    return delete_permission(name)
