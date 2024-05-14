@@ -17,7 +17,7 @@ def get_blocks()-> List[Block]:
     result = BlockRepository(db).get_all_blocks()
     return JSONResponse(content=jsonable_encoder(result), status_code=status.HTTP_200_OK)
 
-@blocks_router.get('{id}',response_model=Block,description="Returns data of one specific block")
+@blocks_router.get('/{id}',response_model=Block,description="Returns data of one specific block")
 def get_blocks(id: int = Path(ge=1)) -> Block:
     db = SessionLocal()
     element=  BlockRepository(db).get_block_by_id(id)
@@ -45,7 +45,7 @@ def create_block(block: Block = Body()) -> dict:
         status_code=status.HTTP_201_CREATED
     )
 
-@blocks_router.delete('{id}',response_model=dict,description="Removes specific block")
+@blocks_router.delete('/{id}',response_model=dict,description="Removes specific block")
 def remove_blocks(id: int = Path(ge=1)) -> dict:
     db = SessionLocal()
     element = BlockRepository(db).get_block_by_id(id)

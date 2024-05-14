@@ -11,8 +11,8 @@ class CourseRepository():
         query = self.db.query(CourseModel)
         return query.all()
     
-    def get_course_by_id(self, id: int ):
-        element = self.db.query(CourseModel).filter(CourseModel.id == id).first()    
+    def get_course_by_code(self, code: str):
+        element = self.db.query(CourseModel).filter(CourseModel.code == code).first()    
         return element
 
     def delete_course(self, id: int ) -> dict: 

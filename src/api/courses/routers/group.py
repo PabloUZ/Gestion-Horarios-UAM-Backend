@@ -17,7 +17,7 @@ def get_groups()-> List[Group]:
     result = GroupRepository(db).get_all_groups()
     return JSONResponse(content=jsonable_encoder(result), status_code=status.HTTP_200_OK)
 
-@group_router.get('{id}',response_model=Group,description="Returns data of one specific group")
+@group_router.get('/{id}',response_model=Group,description="Returns data of one specific group")
 def get_groups(id: int = Path(ge=1)) -> Group:
     db = SessionLocal()
     element=  GroupRepository(db).get_group_by_id(id)
@@ -45,7 +45,7 @@ def create_categorie(group: Group = Body()) -> dict:
         status_code=status.HTTP_201_CREATED
     )
 
-@group_router.delete('{id}',response_model=dict,description="Removes specific group")
+@group_router.delete('/{id}',response_model=dict,description="Removes specific group")
 def remove_groups(id: int = Path(ge=1)) -> dict:
     db = SessionLocal()
     element = GroupRepository(db).get_group_by_id(id)

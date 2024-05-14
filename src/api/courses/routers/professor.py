@@ -17,7 +17,7 @@ def get_professors()-> List[Professor]:
     result = ProfessorRepository(db).get_all_professors()
     return JSONResponse(content=jsonable_encoder(result), status_code=status.HTTP_200_OK)
 
-@professor_router.get('{id}',response_model=Professor,description="Returns data of one specific professor")
+@professor_router.get('/{id}',response_model=Professor,description="Returns data of one specific professor")
 def get_professors(id: int = Path(ge=1)) -> Professor:
     db = SessionLocal()
     element=  ProfessorRepository(db).get_professor_by_id(id)
@@ -45,7 +45,7 @@ def create_categorie(professor: Professor = Body()) -> dict:
         status_code=status.HTTP_201_CREATED
     )
 
-@professor_router.delete('{id}',response_model=dict,description="Removes specific professor")
+@professor_router.delete('/{id}',response_model=dict,description="Removes specific professor")
 def remove_professors(id: int = Path(ge=1)) -> dict:
     db = SessionLocal()
     element = ProfessorRepository(db).get_professor_by_id(id)

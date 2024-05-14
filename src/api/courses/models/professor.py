@@ -3,10 +3,10 @@ from sqlalchemy.orm import relationship
 from src.api.config.database import Base
 
 class Professor(Base):    
-    __tablename__ = "professors"    
+    __tablename__ = "proffesors"    
 
     id                = Column(Integer, primary_key=True, autoincrement=True)      
-    name                = Column(String(length=60))
+    name                = Column(String(length=60), unique=True)
 
-    group = relationship("Group", back_populates="professor")
+    groups = relationship("Group", back_populates="professor")
     
