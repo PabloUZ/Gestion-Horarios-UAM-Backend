@@ -5,6 +5,7 @@ from .middlewares.error_handler import ErrorHandler
 
 from .config.database import Base, engine
 
+from .users.routers.startup import router as init_router
 from .users.routers.auth import router as auth_router
 from .users.routers.users import router as user_router
 from .users.routers.roles import router as role_router
@@ -68,6 +69,7 @@ def root():
     }
 
 
+app.include_router(init_router)
 app.include_router(auth_router)
 app.include_router(user_router)
 app.include_router(role_router)

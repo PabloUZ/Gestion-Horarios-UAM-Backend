@@ -126,6 +126,11 @@ def delete_user(cc):
             "status": 404,
             "message": "User not found"
         }, 404)
+    if user.role.name == "ROOT":
+        return JSONResponse({
+            "status": 400,
+            "message": "This user can't be removed"
+        })
     db.delete(user)
     db.commit()
     return JSONResponse({
@@ -158,7 +163,14 @@ def change_password(cc, pwd):
 
 def add_roles(cc, role_name):
     db = SessionLocal()
+    u_root = db.query(User).filter(User.role_name == "ROOT").first()
+    if role_name == "ROOT" and u_root is not None:
+        return JSONResponse({
+            "status": 400,
+            "message": "This role can only be assigned once"
+        })
     user = db.query(User).filter(User.cc == cc).first()
+
     if not user:
         return JSONResponse({
             "status": 404,
@@ -170,10 +182,15 @@ def add_roles(cc, role_name):
             "status": 404,
             "message": "Role not found"
         }, 404)
-    if user.role is not None and user.role.name == role.name:
+    if user.role is not None and user.role_name == role.name:
         return JSONResponse({
             "status": 400,
             "message": "This user already has the role"
+        })
+    if user.role_name == "ROOT":
+        return JSONResponse({
+            "status": 400,
+            "message": "This user has the role ROOT"
         })
     role.users.append(user)
     db.commit()
