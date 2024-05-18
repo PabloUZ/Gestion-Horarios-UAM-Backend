@@ -29,13 +29,19 @@ def handle_login(payload):
             to_encode['role']['permissions'].append(p["name"])
     else:
         to_encode['role'] = None
-    encoded = JWT.encode(to_encode, 60)
+    encoded = JWT.encode(to_encode, 1)
     return JSONResponse({
         "status": 200,
         "token": encoded
-    }, 401)
+    }, 200)
 
-
+def refresh_token(token):
+    to_encode = JWT.decode(token)
+    encoded = JWT.encode(to_encode, 2)
+    return JSONResponse({
+        "status": 200,
+        "token": encoded
+    }, 200)
 # @router.post('/register')
 # def handle_register(payload = Body()):
 #     pass
