@@ -5,12 +5,12 @@ from bs4 import BeautifulSoup
 import random
 
 class CourseScrapping(Scrapping, Course):
-    def __init__(self):
+    def __init__(self, year, period):
         Scrapping.__init__(self)
         self.courses = []
         self.letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-        self.YEAR = 2024
-        self.PERIOD = 1
+        self.YEAR = year
+        self.PERIOD = period
 
     def get_courses(self) -> list:
         self.login()

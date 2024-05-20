@@ -42,14 +42,15 @@ class CourseAdminRepository:
         if group['proffesor']:
             proffesor_id = self.add_proffesor(group['proffesor'])
 
-        result = GroupRepository(self.db).get_group_by_number_and_course(number=group['number'], course_code=course_code)
+        result = GroupRepository(self.db).get_groups_by_course_and_number(number=group['number'], course_code=course_code)
+        
         group_id = None
         if not result:
             group_model = GroupRepository(self.db).create_new_group(Group(
             name=group['name'], number=group['number'], proffesor_id=proffesor_id, course_code=course_code))
-            group_id = jsonable_encoder(group_model)['id']
+            group_id = group_model.id
         else:
-            group_id = jsonable_encoder(result)['id']
+            group_id = result.id
 
         for classtime in group['classtimes']:
             self.add_classtime(classtime, group_id)
