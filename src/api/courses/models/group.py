@@ -8,7 +8,7 @@ class Group(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(length=100))
-    number = Column(Integer)
+    number = Column(String(length=6))
     course_code = Column(String(length=8), ForeignKey('courses.code'), nullable=False)
     proffesor_id = Column(Integer, ForeignKey('proffesors.id'), nullable=True)
 

@@ -1,11 +1,11 @@
 from typing import List
 from src.api.courses.schemas.course import Course
 from src.api.courses.models.course import Course as CourseModel
-from sqlalchemy import func
+from sqlalchemy.orm import Session
 
 class CourseRepository():    
     def __init__(self, db) -> None:        
-        self.db = db
+        self.db: Session = db
     
     def get_all_courses(self) -> List[Course]: 
         query = self.db.query(CourseModel)
@@ -15,8 +15,8 @@ class CourseRepository():
         element = self.db.query(CourseModel).filter(CourseModel.code == code).first()    
         return element
 
-    def delete_course(self, id: int ) -> dict: 
-        element: Course= self.db.query(CourseModel).filter(CourseModel.id == id).first()       
+    def delete_course(self, code: str ) -> dict: 
+        element: Course= self.db.query(CourseModel).filter(CourseModel.code == code).first()       
         self.db.delete(element)    
         self.db.commit()    
         return element
@@ -28,8 +28,8 @@ class CourseRepository():
         self.db.refresh(new_course)
         return new_course
     
-    def update_course(self, id: int, course: Course) -> dict:        
-        element = self.db.query(CourseModel).filter(CourseModel.id == id).first()                
+    def update_course(self, code: str, course: Course) -> dict:        
+        element = self.db.query(CourseModel).filter(CourseModel.code == code).first()                
         element.name = course.name
         element.credits = course.credits
         element.type = course.type        

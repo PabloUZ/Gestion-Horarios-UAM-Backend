@@ -1,12 +1,15 @@
 import requests, time, random
+from os import getenv
 
 class Scrapping:
     def __init__(self):
         self.client = requests.Session()
-        self.__username = 'martin.ostiosa'
-        self.__password = 'secret'
+        self.__username = getenv('UAM_USER')
+        self.__password = getenv('UAM_PASSWORD')
     
     def login(self):
+        print(self.__username)
+        print(self.__password)
         login_data = {
             'LoginForm[username]': self.__username,
             'LoginForm[password]': self.__password

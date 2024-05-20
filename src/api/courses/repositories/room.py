@@ -7,7 +7,7 @@ class RoomRepository():
     def __init__(self, db) -> None:        
         self.db = db
     
-    def get_all_courses(self) -> List[Room]: 
+    def get_all_rooms(self) -> List[Room]: 
         query = self.db.query(RoomModel)
         return query.all()
     

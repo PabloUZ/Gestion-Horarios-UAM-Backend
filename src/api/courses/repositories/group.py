@@ -1,13 +1,13 @@
 from typing import List
 from src.api.courses.schemas.group import Group
 from src.api.courses.models.group import Group as GroupModel
-from sqlalchemy import func
+from sqlalchemy.orm import Session
 
 class GroupRepository():    
     def __init__(self, db) -> None:        
-        self.db = db
+        self.db: Session = db
     
-    def get_all_courses(self) -> List[Group]: 
+    def get_all_groups(self) -> List[Group]: 
         query = self.db.query(GroupModel)
         return query.all()
     
@@ -15,8 +15,8 @@ class GroupRepository():
         element = self.db.query(GroupModel).filter(GroupModel.id == id).first()    
         return element
     
-    def get_group_by_number_and_course(self, number: int, course_code: str ):
-        element = self.db.query(GroupModel).filter(GroupModel.number == number and GroupModel.course_code == course_code).first()    
+    def get_groups_by_course_and_number(self, course_code: str, number: int) -> Group | None:
+        element = self.db.query(GroupModel).filter(GroupModel.course_code == course_code, GroupModel.number == number).first()
         return element
 
     def delete_group(self, id: int ) -> dict: 
@@ -25,7 +25,7 @@ class GroupRepository():
         self.db.commit()    
         return element
 
-    def create_new_group(self, group:Group ) -> dict:
+    def create_new_group(self, group:Group ) -> Group:
         new_group = GroupModel(**group.model_dump())    
         self.db.add(new_group)
         self.db.commit()    
