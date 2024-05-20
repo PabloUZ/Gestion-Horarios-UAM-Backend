@@ -7,7 +7,7 @@ class CourseTypeRepository():
     def __init__(self, db) -> None:        
         self.db = db
     
-    def get_all_courses(self) -> List[CourseType]: 
+    def get_all_courseTypes(self) -> List[CourseType]: 
         query = self.db.query(CourseTypeModel)
         return query.all()
     

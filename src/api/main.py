@@ -49,17 +49,13 @@ from .courses.models.course_type import CourseType
 from .courses.models.course import Course
 from .courses.models.group import Group
 
-
-from .config.startup import Startup
-
-
 api_version = getenv("API_VERSION")
 
 app = FastAPI(root_path=f"/api/v{api_version}")
 
 Base.metadata.create_all(bind=engine)
 
-#app.add_middleware(ErrorHandler)
+app.add_middleware(ErrorHandler)
 
 @app.get('/')
 def root():
@@ -88,8 +84,3 @@ app.include_router(courseType_router)
 app.include_router(course_router)
 app.include_router(group_router)
 app.include_router(professor_router)
-
-
-#startup = Startup()
-#startup.add_blocks()
-#startup.add_course_types()

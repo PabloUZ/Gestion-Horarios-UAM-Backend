@@ -11,6 +11,13 @@ from src.api.users.repositories.roles import add_perms, post_role
 from src.api.users.repositories.permissions import post_permission
 from src.api.config.database import SessionLocal
 
+from src.api.courses.repositories.block import BlockRepository
+from src.api.courses.schemas.block import Block
+
+from src.api.courses.repositories.course_type import CourseTypeRepository
+from src.api.courses.schemas.course_type import CourseType
+
+
 router = APIRouter(prefix="/init")
 
 
@@ -58,6 +65,14 @@ async def init(file: UploadFile = File()):
         active=data["user"]["active"]
     ))
     add_roles(data["user"]["cc"], "ROOT")
+
+    db= SessionLocal()
+    for block in data["blocks"]:
+        BlockRepository(db).create_new_block(Block(name=block["name"], prefix=block["prefix"]))
+
+    for course_types in data["course_types"]:
+        CourseTypeRepository(db).create_new_courseType(CourseType(name=course_types))
+
     return JSONResponse({
         "status": 200,
         "message": "System initialization success"
