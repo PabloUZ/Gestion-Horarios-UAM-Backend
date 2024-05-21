@@ -29,6 +29,7 @@ class AcademicHistoryRepository():
         upd_academic_history = self.db.query(AcademicHistoryModel).filter(AcademicHistoryModel.id == academic_history_id).first()
         upd_academic_history.created_at = academic_history.created_at
         upd_academic_history.study_plan_id = academic_history.study_plan_id
+        upd_academic_history.user_cc = academic_history.user_cc
         self.db.commit()
         self.db.refresh(upd_academic_history)
         return upd_academic_history
