@@ -23,6 +23,7 @@ class FacultyRepository():
         self.db.add(new_faculty)
         self.db.commit()
         self.db.refresh(new_faculty)
+        print(new_faculty)
         return new_faculty
     
     def update_faculty(self, faculty_id:int, faculty:Faculty) -> Faculty:

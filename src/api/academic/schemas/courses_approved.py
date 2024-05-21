@@ -3,7 +3,7 @@ from typing import Optional
 
 class CoursesApproved(BaseModel):
     id: Optional[int] = Field(default= None, gt=0, title="ID of the Course Approved")
-    course_id: str = Field(gt=0, title="ID of the course")
+    course_id: str = Field(title="ID of the course")
     academic_history_id: int = Field(gt=0, title="ID of the academic history")
     
     class Config:

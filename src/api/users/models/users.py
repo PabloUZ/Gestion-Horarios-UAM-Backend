@@ -13,4 +13,5 @@ class User(Base):
     active = Column(Boolean, default=False)
     role_name = Column('role', String(length=50), ForeignKey('roles.name', ondelete='SET NULL'))
 
+    academic_history = relationship("AcademicHistory", back_populates="user")
     role = relationship("Role", back_populates="users", passive_deletes=True)
