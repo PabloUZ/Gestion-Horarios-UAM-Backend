@@ -8,6 +8,7 @@ class HasPermission:
         self.allow_own = allow_own
     def __call__(self, data = Depends(has_access)):
         try:
+            print(data)
             if data['payload']['role'] is not None and self.name not in data['payload']['role']['permissions']:
                 if not self.allow_own:
                     raise HTTPException(status_code=403, detail="Forbidden")
@@ -20,4 +21,5 @@ class HasPermission:
                     raise HTTPException(status_code=403, detail="Forbidden")
             return data['payload']
         except:
+            print(7)
             raise HTTPException(status_code=403, detail="Forbidden")

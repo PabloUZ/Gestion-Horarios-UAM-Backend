@@ -10,23 +10,21 @@ def find_by_name(name):
     role = db.query(Role).filter(Role.name == name).first()
     return role
 
-def save_role(role):
-    db = SessionLocal()
+def save_role(role, db):
     new_role = Role(**role.model_dump())
     db.add(new_role)
     db.commit()
     db.refresh(new_role)
     return new_role
 
-def post_role(role):
-    db = SessionLocal()
+def post_role(role, db):
     old = db.query(Role).filter(Role.name == role.name).first()
     if old:
         return JSONResponse({
             "status": 400,
             "message": "Role already exists"
         }, 400)
-    new = save_role(role)
+    new = save_role(role, db)
     return JSONResponse({
         "status": 201,
         "message": "Role created successfully",
@@ -107,9 +105,9 @@ def delete_role(name):
         "role": jsonable_encoder(role)
     }, 200)
 
-def add_perms(role_name, permissions):
-    db = SessionLocal()
+def add_perms(role_name, permissions, db):
     role = db.query(Role).filter(Role.name == role_name).first()
+    print(10)
     if not role:
         return JSONResponse({
             "status": 404,
@@ -117,6 +115,7 @@ def add_perms(role_name, permissions):
         }, 404)
     perms = []
     error = None
+    print(11)
     for perm_name in permissions:
         perm = db.query(Permission).filter(Permission.name == perm_name).first()
         if not perm:
@@ -133,15 +132,17 @@ def add_perms(role_name, permissions):
                         "permissions": []
                     }
                 error["permissions"].append(p.name)
+        print(12)
         perms.append(perm)
     if error is not None:
         return JSONResponse(error, 400)
+    print(13)
     role.permissions.extend(perms)
     db.commit()
     db.refresh(role)
     role_dict = jsonable_encoder(role)
     role_dict["permissions"] = jsonable_encoder(role.permissions)
-
+    print(role_dict)
     return JSONResponse({
         "status": 200,
         "message": "Permissions added successfully",

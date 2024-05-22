@@ -17,8 +17,7 @@ def save_permission(permission):
     db.refresh(new_perm)
     return new_perm
 
-def post_permission(permission):
-    db = SessionLocal()
+def post_permission(permission, db):
     old = db.query(Permission).filter(Permission.name == permission.name).first()
     if old:
         return JSONResponse({

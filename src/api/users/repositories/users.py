@@ -6,26 +6,25 @@ from src.api.config.database import SessionLocal
 from src.api.users.models.users import User
 from src.api.utils.password import Password
 
-def list_all_users():
-    db = SessionLocal()
+def list_all_users(db):
     return db.query(User)
 
-def find_by_cc(cc):
-    return list_all_users().filter(User.cc == cc).first()
+def find_by_cc(cc, db):
+    return list_all_users(db).filter(User.cc == cc).first()
 
-def find_by_email(email):
-    return list_all_users().filter(User.email == email).first()
+def find_by_email(email, db):
+    return list_all_users(db).filter(User.email == email).first()
 
-def user_existent_params(user):
+def user_existent_params(user, db):
     existent = None
-    old = find_by_cc(user.cc)
+    old = find_by_cc(user.cc, db)
     if old is not None:
         if existent is None:
             existent = {
                 "params": []
             }
         existent["params"].append("cc")
-    old = find_by_email(user.email)
+    old = find_by_email(user.email, db)
     if old is not None:
         if existent is None:
             existent = {
@@ -34,8 +33,7 @@ def user_existent_params(user):
         existent["params"].append("email")
     return existent
 
-def save_user(user):
-    db = SessionLocal()
+def save_user(user, db):
     new_user = User(**user.model_dump())
     new_user.password = Password.hash(new_user.password)
     db.add(new_user)
@@ -43,15 +41,15 @@ def save_user(user):
     db.refresh(new_user)
     return new_user
 
-def post_user(user):
-    error = user_existent_params(user)
+def post_user(user, db):
+    error = user_existent_params(user, db)
     if error is not None:
         return JSONResponse({
             "status": 400,
             "message": "Unique field values encountered",
             "detail": error
         }, 400)
-    new = save_user(user)
+    new = save_user(user, db)
     return JSONResponse({
         "status": 201,
         "message": "User created successfully",
@@ -59,7 +57,8 @@ def post_user(user):
     }, 201)
 
 def get_all_users(email = None, active = None, f_name = None, l_name = None):
-    users = list_all_users()
+    db = SessionLocal()
+    users = list_all_users(db)
     if email:
         users = users.filter(User.email == email)
     if active:
@@ -80,7 +79,8 @@ def get_all_users(email = None, active = None, f_name = None, l_name = None):
     return JSONResponse(jsonable_encoder(users.all()), 200)
 
 def get_single(cc):
-    user = find_by_cc(cc)
+    db = SessionLocal()
+    user = find_by_cc(cc, db)
     if not user:
         return JSONResponse({
             "status": 404,
@@ -161,8 +161,7 @@ def change_password(cc, pwd):
         "user": jsonable_encoder(user)
     }, 200)
 
-def add_roles(cc, role_name):
-    db = SessionLocal()
+def add_roles(cc, role_name, db):
     u_root = db.query(User).filter(User.role_name == "ROOT").first()
     if role_name == "ROOT" and u_root is not None:
         return JSONResponse({

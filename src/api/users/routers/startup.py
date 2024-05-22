@@ -31,13 +31,11 @@ async def init(file: UploadFile = File()):
             "message": "System was already initialized"
         })
     content = await file.read()
-
     if file.content_type != "application/json":
         return JSONResponse({
             "status": 400,
             "message": "File is not JSON"
         })
-    print(content)
     try:
         data = json.loads(content)
     except:
@@ -48,14 +46,15 @@ async def init(file: UploadFile = File()):
     for permission in data["permissions"]:
         post_permission(CreatePermission(
             name=permission["name"],
-            description=permission["description"]))
+            description=permission["description"]), db)
     for role in data["roles"]:
         post_role(CreateRole(
             name=role["creation"]["name"],
             description=role["creation"]["description"],
             active=role["creation"]["active"]
-        ))
-        add_perms(role["creation"]["name"], role["permissions"])
+        ), db)
+        add_perms(role["creation"]["name"], role["permissions"], db)
+
     post_user(CreateUser(
         cc=data["user"]["cc"],
         email=data["user"]["email"],
@@ -63,16 +62,14 @@ async def init(file: UploadFile = File()):
         last_name=data["user"]["last_name"],
         password=data["user"]["password"],
         active=data["user"]["active"]
-    ))
-    add_roles(data["user"]["cc"], "ROOT")
+    ), db)
+    add_roles(data["user"]["cc"], "ROOT", db)
 
-    db= SessionLocal()
     for block in data["blocks"]:
         BlockRepository(db).create_new_block(Block(name=block["name"], prefix=block["prefix"]))
 
     for course_types in data["course_types"]:
         CourseTypeRepository(db).create_new_courseType(CourseType(name=course_types))
-
     return JSONResponse({
         "status": 200,
         "message": "System initialization success"
