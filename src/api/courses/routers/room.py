@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Body, Path, status
+from fastapi import APIRouter, Depends, Body, Path, status
 from fastapi.responses import JSONResponse
 from typing import List
 from src.api.courses.schemas.room import Room
@@ -6,6 +6,8 @@ from fastapi import APIRouter
 from src.api.config.database import SessionLocal 
 from fastapi.encoders import jsonable_encoder
 from src.api.courses.repositories.room import RoomRepository
+from src.api.middlewares.has_permission import HasPermission
+from src.api.middlewares.has_access import has_access
 
 room_router = APIRouter(prefix='/rooms', tags=['rooms'])
 
@@ -33,7 +35,7 @@ def get_rooms(id: int = Path(ge=1)) -> Room:
         status_code=status.HTTP_200_OK
         )
 
-@room_router.post('',response_model=dict,description="Creates a new room")
+@room_router.post('',response_model=dict,description="Creates a new room", dependencies=[Depends(has_access), Depends(HasPermission("CREATE_ROOM"))])
 def create_categorie(room: Room = Body()) -> dict:
     db= SessionLocal()
     new_room = RoomRepository(db).create_new_room(room)
@@ -45,7 +47,7 @@ def create_categorie(room: Room = Body()) -> dict:
         status_code=status.HTTP_201_CREATED
     )
 
-@room_router.delete('/{id}',response_model=dict,description="Removes specific room")
+@room_router.delete('/{id}',response_model=dict,description="Removes specific room", dependencies=[Depends(has_access), Depends(HasPermission("DELETE_ROOM"))])
 def remove_rooms(id: int = Path(ge=1)) -> dict:
     db = SessionLocal()
     element = RoomRepository(db).get_room_by_id(id)
@@ -66,7 +68,7 @@ def remove_rooms(id: int = Path(ge=1)) -> dict:
         status_code=status.HTTP_200_OK
         )
 
-@room_router.put('/{id}', tags=['rooms'], response_model=dict, description="Updates the data of specific room") 
+@room_router.put('/{id}', tags=['rooms'], response_model=dict, description="Updates the data of specific room", dependencies=[Depends(has_access), Depends(HasPermission("UPDATE_ROOM"))]) 
 def update_room(id: int = Path(ge=1), room: Room = Body()) -> dict:    
     db = SessionLocal()    
     element = RoomRepository(db).get_room_by_id(id)    

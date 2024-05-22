@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Body, Path, status
+from fastapi import APIRouter, Depends, Body, Path, status
 from fastapi.responses import JSONResponse
 from typing import List
 from src.api.courses.schemas.group import Group
@@ -6,6 +6,8 @@ from fastapi import APIRouter
 from src.api.config.database import SessionLocal 
 from fastapi.encoders import jsonable_encoder
 from src.api.courses.repositories.group import GroupRepository
+from src.api.middlewares.has_permission import HasPermission
+from src.api.middlewares.has_access import has_access
 
 group_router = APIRouter(prefix='/groups', tags=['groups'])
 
@@ -33,7 +35,7 @@ def get_groups(id: int = Path(ge=1)) -> Group:
         status_code=status.HTTP_200_OK
         )
 
-@group_router.post('',response_model=dict,description="Creates a new group")
+@group_router.post('',response_model=dict,description="Creates a new group", dependencies=[Depends(has_access), Depends(HasPermission("CREATE_GROUP"))])
 def create_categorie(group: Group = Body()) -> dict:
     db= SessionLocal()
     new_group = GroupRepository(db).create_new_group(group)
@@ -45,7 +47,7 @@ def create_categorie(group: Group = Body()) -> dict:
         status_code=status.HTTP_201_CREATED
     )
 
-@group_router.delete('/{id}',response_model=dict,description="Removes specific group")
+@group_router.delete('/{id}',response_model=dict,description="Removes specific group", dependencies=[Depends(has_access), Depends(HasPermission("DELETE_GROUP"))])
 def remove_groups(id: int = Path(ge=1)) -> dict:
     db = SessionLocal()
     element = GroupRepository(db).get_group_by_id(id)
@@ -66,7 +68,7 @@ def remove_groups(id: int = Path(ge=1)) -> dict:
         status_code=status.HTTP_200_OK
         )
 
-@group_router.put('/{id}', tags=['groups'], response_model=dict, description="Updates the data of specific group") 
+@group_router.put('/{id}', tags=['groups'], response_model=dict, description="Updates the data of specific group", dependencies=[Depends(has_access), Depends(HasPermission("UPDATE_GROUP"))]) 
 def update_group(id: int = Path(ge=1), group: Group = Body()) -> dict:    
     db = SessionLocal()    
     element = GroupRepository(db).get_group_by_id(id)    

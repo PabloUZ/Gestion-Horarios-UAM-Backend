@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Body, Path, status
+from fastapi import APIRouter, Depends, Body, Path, status
 from fastapi.responses import JSONResponse
 from typing import List
 from src.api.courses.schemas.course import Course
@@ -6,6 +6,8 @@ from fastapi import APIRouter
 from src.api.config.database import SessionLocal 
 from fastapi.encoders import jsonable_encoder
 from src.api.courses.repositories.course import CourseRepository
+from src.api.middlewares.has_permission import HasPermission
+from src.api.middlewares.has_access import has_access
 
 course_router = APIRouter(prefix='/courses', tags=['courses'])
 
@@ -20,7 +22,7 @@ def get_courses()-> List[Course]:
 @course_router.get('/{id}',response_model=Course,description="Returns data of one specific course")
 def get_courses(id: int = Path(ge=1)) -> Course:
     db = SessionLocal()
-    element=  CourseRepository(db).get_course_by_id(id)
+    element=  CourseRepository(db).get_course_by_code(id)
     if not element:        
         return JSONResponse(
             content={            
@@ -33,7 +35,7 @@ def get_courses(id: int = Path(ge=1)) -> Course:
         status_code=status.HTTP_200_OK
         )
 
-@course_router.post('',response_model=dict,description="Creates a new course")
+@course_router.post('',response_model=dict,description="Creates a new course", dependencies=[Depends(has_access), Depends(HasPermission("CREATE_COURSE"))])
 def create_categorie(course: Course = Body()) -> dict:
     db= SessionLocal()
     new_course = CourseRepository(db).create_new_course(course)
@@ -45,10 +47,10 @@ def create_categorie(course: Course = Body()) -> dict:
         status_code=status.HTTP_201_CREATED
     )
 
-@course_router.delete('/{id}',response_model=dict,description="Removes specific course")
+@course_router.delete('/{id}',response_model=dict,description="Removes specific course", dependencies=[Depends(has_access), Depends(HasPermission("DELETE_COURSE"))])
 def remove_courses(id: int = Path(ge=1)) -> dict:
     db = SessionLocal()
-    element = CourseRepository(db).get_course_by_id(id)
+    element = CourseRepository(db).get_course_by_code(id)
     if not element:        
         return JSONResponse(
             content={            
@@ -66,10 +68,10 @@ def remove_courses(id: int = Path(ge=1)) -> dict:
         status_code=status.HTTP_200_OK
         )
 
-@course_router.put('/{id}', tags=['courses'], response_model=dict, description="Updates the data of specific course") 
+@course_router.put('/{id}', tags=['courses'], response_model=dict, description="Updates the data of specific course", dependencies=[Depends(has_access), Depends(HasPermission("UPDATE_COURSE"))]) 
 def update_course(id: int = Path(ge=1), course: Course = Body()) -> dict:    
     db = SessionLocal()    
-    element = CourseRepository(db).get_course_by_id(id)    
+    element = CourseRepository(db).get_course_by_code(id)    
     if not element:        
         return JSONResponse(
             content={            
