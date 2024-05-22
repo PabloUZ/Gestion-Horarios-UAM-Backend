@@ -41,7 +41,8 @@ def save_user(user, db):
     db.refresh(new_user)
     return new_user
 
-def post_user(user, db):
+def post_user(user):
+    db = SessionLocal()
     error = user_existent_params(user, db)
     if error is not None:
         return JSONResponse({
