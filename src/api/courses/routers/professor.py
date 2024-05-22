@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Body, Path, status
+from fastapi import APIRouter, Depends, Body, Path, status
 from fastapi.responses import JSONResponse
 from typing import List
 from src.api.courses.schemas.professor import Professor
@@ -6,6 +6,8 @@ from fastapi import APIRouter
 from src.api.config.database import SessionLocal 
 from fastapi.encoders import jsonable_encoder
 from src.api.courses.repositories.professor import ProfessorRepository
+from src.api.middlewares.has_permission import HasPermission
+from src.api.middlewares.has_access import has_access
 
 professor_router = APIRouter(prefix='/professors', tags=['professors'])
 
@@ -33,7 +35,7 @@ def get_professors(id: int = Path(ge=1)) -> Professor:
         status_code=status.HTTP_200_OK
         )
 
-@professor_router.post('',response_model=dict,description="Creates a new professor")
+@professor_router.post('',response_model=dict,description="Creates a new professor", dependencies=[Depends(has_access), Depends(HasPermission("CREATE_PROFESSOR"))])
 def create_categorie(professor: Professor = Body()) -> dict:
     db= SessionLocal()
     new_professor = ProfessorRepository(db).create_new_professor(professor)
@@ -45,7 +47,7 @@ def create_categorie(professor: Professor = Body()) -> dict:
         status_code=status.HTTP_201_CREATED
     )
 
-@professor_router.delete('/{id}',response_model=dict,description="Removes specific professor")
+@professor_router.delete('/{id}',response_model=dict,description="Removes specific professor", dependencies=[Depends(has_access), Depends(HasPermission("DELETE_PROFESSOR"))])
 def remove_professors(id: int = Path(ge=1)) -> dict:
     db = SessionLocal()
     element = ProfessorRepository(db).get_professor_by_id(id)
@@ -66,7 +68,7 @@ def remove_professors(id: int = Path(ge=1)) -> dict:
         status_code=status.HTTP_200_OK
         )
 
-@professor_router.put('/{id}', tags=['professors'], response_model=dict, description="Updates the data of specific professor") 
+@professor_router.put('/{id}', tags=['professors'], response_model=dict, description="Updates the data of specific professor", dependencies=[Depends(has_access), Depends(HasPermission("UPDATE_PROFESSOR"))]) 
 def update_professor(id: int = Path(ge=1), professor: Professor = Body()) -> dict:    
     db = SessionLocal()    
     element = ProfessorRepository(db).get_professor_by_id(id)    

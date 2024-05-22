@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Body, Path, status
+from fastapi import APIRouter, Depends, Body, Path, status
 from fastapi.responses import JSONResponse
 from typing import List
 from src.api.courses.schemas.block import Block
@@ -6,12 +6,14 @@ from fastapi import APIRouter
 from src.api.config.database import SessionLocal 
 from fastapi.encoders import jsonable_encoder
 from src.api.courses.repositories.block import BlockRepository
+from src.api.middlewares.has_permission import HasPermission
+from src.api.middlewares.has_access import has_access
 
 blocks_router = APIRouter(prefix='/blocks', tags=['blocks'])
 
 #CRUD blocks
 
-@blocks_router.get('',response_model=List[Block],description="Returns all blocks")
+@blocks_router.get('',response_model=List[Block],description="Returns all blocks" )
 def get_blocks()-> List[Block]:
     db= SessionLocal()
     result = BlockRepository(db).get_all_blocks()
@@ -33,7 +35,7 @@ def get_blocks(id: int = Path(ge=1)) -> Block:
         status_code=status.HTTP_200_OK
         )
 
-@blocks_router.post('',response_model=dict,description="Creates a new block")
+@blocks_router.post('',response_model=dict,description="Creates a new block", dependencies=[Depends(has_access), Depends(HasPermission("CREATE_BLOCK"))])
 def create_block(block: Block = Body()) -> dict:
     db= SessionLocal()
     new_block = BlockRepository(db).create_new_block(block)
@@ -45,7 +47,7 @@ def create_block(block: Block = Body()) -> dict:
         status_code=status.HTTP_201_CREATED
     )
 
-@blocks_router.delete('/{id}',response_model=dict,description="Removes specific block")
+@blocks_router.delete('/{id}',response_model=dict,description="Removes specific block", dependencies=[Depends(has_access), Depends(HasPermission("DELETE_BLOCK"))])
 def remove_blocks(id: int = Path(ge=1)) -> dict:
     db = SessionLocal()
     element = BlockRepository(db).get_block_by_id(id)
@@ -66,7 +68,7 @@ def remove_blocks(id: int = Path(ge=1)) -> dict:
         status_code=status.HTTP_200_OK
         )
 
-@blocks_router.put('/{id}', tags=['blocks'], response_model=dict, description="Updates the data of specific block") 
+@blocks_router.put('/{id}', tags=['blocks'], response_model=dict, description="Updates the data of specific block", dependencies=[Depends(has_access), Depends(HasPermission("UPDATE_BLOCK"))]) 
 def update_block(id: int = Path(ge=1), block: Block = Body()) -> dict:    
     db = SessionLocal()    
     element = BlockRepository(db).get_block_by_id(id)    

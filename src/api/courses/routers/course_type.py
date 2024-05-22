@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Body, Path, status
+from fastapi import APIRouter, Depends, Body, Path, status
 from fastapi.responses import JSONResponse
 from typing import List
 from src.api.courses.schemas.course_type import CourseType
@@ -6,6 +6,8 @@ from fastapi import APIRouter
 from src.api.config.database import SessionLocal 
 from fastapi.encoders import jsonable_encoder
 from src.api.courses.repositories.course_type import CourseTypeRepository
+from src.api.middlewares.has_permission import HasPermission
+from src.api.middlewares.has_access import has_access
 
 courseType_router = APIRouter(prefix='/courseTypes', tags=['courseTypes'])
 
@@ -33,7 +35,7 @@ def get_courseTypes(id: int = Path(ge=1)) -> CourseType:
         status_code=status.HTTP_200_OK
         )
 
-@courseType_router.post('',response_model=dict,description="Creates a new courseType")
+@courseType_router.post('',response_model=dict,description="Creates a new courseType", dependencies=[Depends(has_access), Depends(HasPermission("CREATE_COURSE_TYPE"))])
 def create_categorie(courseType: CourseType = Body()) -> dict:
     db= SessionLocal()
     new_courseType = CourseTypeRepository(db).create_new_courseType(courseType)
@@ -45,7 +47,7 @@ def create_categorie(courseType: CourseType = Body()) -> dict:
         status_code=status.HTTP_201_CREATED
     )
 
-@courseType_router.delete('/{id}',response_model=dict,description="Removes specific courseType")
+@courseType_router.delete('/{id}',response_model=dict,description="Removes specific courseType", dependencies=[Depends(has_access), Depends(HasPermission("DELETE_COURSE_TYPE"))])
 def remove_courseTypes(id: int = Path(ge=1)) -> dict:
     db = SessionLocal()
     element = CourseTypeRepository(db).get_courseType_by_id(id)
@@ -66,7 +68,7 @@ def remove_courseTypes(id: int = Path(ge=1)) -> dict:
         status_code=status.HTTP_200_OK
         )
 
-@courseType_router.put('/{id}', tags=['courseTypes'], response_model=dict, description="Updates the data of specific courseType") 
+@courseType_router.put('/{id}', tags=['courseTypes'], response_model=dict, description="Updates the data of specific courseType", dependencies=[Depends(has_access), Depends(HasPermission("UPDATE_COURSE_TYPE"))]) 
 def update_courseType(id: int = Path(ge=1), courseType: CourseType = Body()) -> dict:    
     db = SessionLocal()    
     element = CourseTypeRepository(db).get_courseType_by_id(id)    
