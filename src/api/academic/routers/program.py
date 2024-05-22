@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from src.api.academic.schemas.program import Program
 from src.api.academic.repositories.program import ProgramRepository
 from fastapi import Body, Path
@@ -10,6 +10,8 @@ from src.api.academic.models.program import Program as ProgramModel
 from fastapi.encoders import jsonable_encoder
 from fastapi.params import Query
 from fastapi import status
+from src.api.middlewares.has_permission import HasPermission
+
 router = APIRouter(prefix="/program", tags=["Program"])
 
 @router.get("/", response_model=List[Program], description="Get all programs")
@@ -26,13 +28,13 @@ def get_program_by_id(program_id: int = Path(ge=1)) -> Program:
         return JSONResponse(content={"message": "Program not found", "data":None}, status_code=status.HTTP_404_NOT_FOUND)
     return JSONResponse(content=jsonable_encoder(program), status_code=status.HTTP_200_OK)
 
-@router.post("/", response_model=Program, description="Create a new program")
+@router.post("/",dependencies=[Depends(HasPermission("CREATE_PROGRAM"))] , response_model=Program, description="Create a new program")
 def create_program(program: Program = Body()) -> dict:
     db = SessionLocal()
     new_program = ProgramRepository(db).create_program(program)
     return JSONResponse(content={"message":"Program created succesfully", "data": jsonable_encoder(new_program)}, status_code=status.HTTP_201_CREATED)
 
-@router.put("/{program_id}", response_model=Program, description="Update a program by id")
+@router.put("/{program_id}",dependencies=[Depends(HasPermission("UPDATE_PROGRAM"))] , response_model=Program, description="Update a program by id")
 def update_program(program_id: int = Path(ge=1), program: Program = Body()) -> dict:
     db = SessionLocal()
     upd_program = ProgramRepository(db).get_program(program_id)
@@ -42,7 +44,7 @@ def update_program(program_id: int = Path(ge=1), program: Program = Body()) -> d
     upd_program = ProgramRepository(db).update_program(program_id, program)
     return JSONResponse(content={"message":"Program updated succesfully", "data": jsonable_encoder(upd_program)}, status_code=status.HTTP_200_OK)
 
-@router.delete("/{program_id}",response_model=dict, description="Delete a program by id")
+@router.delete("/{program_id}",dependencies=[Depends(HasPermission("DELETE_PROGRAM"))] ,response_model=dict, description="Delete a program by id")
 def delete_program(program_id: int = Path(ge=1)) -> dict:
     db = SessionLocal()
     del_program = ProgramRepository(db).get_program(program_id)
